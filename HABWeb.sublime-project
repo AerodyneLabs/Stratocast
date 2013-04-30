@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/home/eharstad/Dev/HABWeb"
+			"path": "/home/eharstad/Dev/HABWeb",
+			"folder_exclude_patterns": ["node_modules"]
 		}
 	]
 }

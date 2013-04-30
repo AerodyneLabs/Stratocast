@@ -21,3 +21,13 @@ node_modules
 # Sublime
 #
 *.sublime-workspace
+
+#
+# Redis
+#
+*.rdb
+
+#
+# Project Specific
+#
+public
