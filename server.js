@@ -1,6 +1,12 @@
 var express = require('express');
 var http = require('http');
-var kue = require('kue');
+var mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1/habweb');
+mongoose.connection.on('open', function() {
+	console.log('Connected to Mongoose');
+});
 
 // Create the webserver
 app = express();
@@ -11,8 +17,3 @@ app.configure(function() {
 });
 
 http.createServer(app).listen(8000);
-
-// Create the job queue
-var jobs = kue.createQueue()
-kue.app.set('title', 'HAB Web Job Queue');
-kue.app.listen(3000);
