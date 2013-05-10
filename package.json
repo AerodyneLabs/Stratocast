@@ -1,7 +1,7 @@
 {
-  "name": "HABWeb",
+  "name": "Stratocast",
   "description": "An online high altitude balloon prediction application",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "AeroDyne Labs <support@aerodynelabs.com>",
   "contributors": [
     {
@@ -12,14 +12,22 @@
   "license": "BSD",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aerodynelabs/habweb"
+    "url": "https://github.com/AerodyneLabs/Stratocast"
   },
   "dependencies": {
     "express": "~3.2.0",
     "request": "~2.20.0",
-    "mongoose": "~3.6.9"
+    "mongoose": "~3.6.9",
+    "javascript-brunch": "~1.5.1",
+    "coffee-script-brunch": "~1.5.1",
+    "css-brunch": "~1.5.1",
+    "clean-css-brunch": "~1.5.1",
+    "uglify-js-brunch": "~1.5.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "autobuild-server": "nodemon server.js",
+    "build-client": "brunch build"
+    "autobuild-client": "brunch watch"
   }
 }

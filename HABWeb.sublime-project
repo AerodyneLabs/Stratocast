@@ -2,8 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "/home/eharstad/Dev/HABWeb",
-			"folder_exclude_patterns": ["node_modules"]
+			"path": "../Stratocast",
+			"folder_exclude_patterns": [
+				"node_modules"
+			]
 		}
 	]
 }
