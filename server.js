@@ -13,7 +13,6 @@ mongoose.connection.on('open', function() {
 
 // Create the job queue
 var jobs = kue.createQueue();
-kue.app.listen(8000);
 
 // Create the webserver
 app = express();
@@ -21,6 +20,12 @@ app = express();
 app.configure(function() {
 	app.use(express.logger('dev'));
 	app.use(express.static(__dirname + '/public'));
+	app.use(express.basicAuth(function(user, pass, callback) {
+		var result = (user === 'admin' && pass === 'password');
+		console.log(result);
+		callback(null, result);
+}));
+	app.use('/queue', kue.app);
 });
 
 http.createServer(app).listen(80);
