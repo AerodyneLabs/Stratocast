@@ -27,7 +27,7 @@
   "scripts": {
     "start": "node server.js",
     "autobuild-server": "nodemon server.js",
-    "build-client": "brunch build"
+    "build-client": "brunch build",
     "autobuild-client": "brunch watch"
   }
 }
