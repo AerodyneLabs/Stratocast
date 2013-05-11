@@ -22,7 +22,8 @@
     "coffee-script-brunch": "~1.5.1",
     "css-brunch": "~1.5.1",
     "clean-css-brunch": "~1.5.1",
-    "uglify-js-brunch": "~1.5.1"
+    "uglify-js-brunch": "~1.5.1",
+    "kue": "~0.6.2"
   },
   "scripts": {
     "start": "node server.js",
