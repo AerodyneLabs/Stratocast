@@ -7,11 +7,11 @@ exports.config =
 				'vendor.js': /^vendor/
 			order:
 				before: [
+					'vendor/jquery-1.9.1.js',
 					'vendor/underscore.js',
 					'vendor/json2.js'
-					'vendor/jquery-1.9.1.js',
 					'vendor/backbone.js',
-					'vendor/backon.marionette.js',
+					'vendor/jqm-config.js',
 					'vendor/jquery.mobile-1.3.1.js'
 				]
 

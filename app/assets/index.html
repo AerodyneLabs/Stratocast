@@ -9,17 +9,33 @@
 </head>
 <body>
 
-<div data-role="page">
+<script type="text/template" id="home">
 	<div data-role="header">
-		<h1>Stratocast</h1>
+		<h2>Header</h2>
+		<a href="#about">About</a>
 	</div>
-	<div data-role="content">
-		blah blah blah
+	<div data-role="content" id="content">
+		Content
 	</div>
-	<div data-role="footer">
-		<h1>footer</h1>
+	<div data-role="footer" id="footer">
+		Footer
 	</div>
-</div>
+</script>
+
+<script type="text/template" id="about">
+	<div data-role="header">
+		<a href="#" data-rel="back" class="back">Back</a>
+		<h2>Header</h2>
+	</div>
+	<div data-role="content" id="content">
+		About
+	</div>
+	<div data-role="footer" id="footer">
+		Footer
+	</div>
+</script>
+
+<script>require('main');</script>
 
 </body>
 </html>
