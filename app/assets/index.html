@@ -11,12 +11,23 @@
 
 <script type="text/template" id="page-layout">
 	<div data-role="header">
-		<a href="">Back</a>
-		<h2 id="header"></h2>
+		<a href="" data-rel="back" class="back">Back</a>
+		<h2 id="header">Header</h2>
 		<a href="">About</a>
 	</div>
-	<div data-role="content" id="content">Content</div>
-	<div data-role="footer" id="footer">Footer</div>
+	<div id="content" data-role="content">Content</div>
+	<div id="footer" data-role="footer">Footer</div>
+</script>
+
+<script type="text/template" id="page-panel-layout">
+	<div data-role="header">
+		<a href="" data-rel="back" class="back">Back</a>
+		<h2 id="header">Header</h2>
+		<a href="">About</a>
+	</div>
+	<div id="content" data-role="content">Content</div>
+	<div id="footer" data-role="footer">Footer</div>
+	<div id="panel" data-role="panel" data-position="right">Panel</div>
 </script>
 
 <script src="app.js"></script>

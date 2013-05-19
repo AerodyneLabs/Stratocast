@@ -15,6 +15,9 @@ exports.config =
 					'vendor/jqm-config.js',
 					'vendor/jquery.mobile-1.3.1.js'
 				]
+				after: [
+					'app/main.js'
+				]
 
 		stylesheets:
 			joinTo:

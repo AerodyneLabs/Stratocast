@@ -1,6 +1,6 @@
-MyApp = new Backbone.Marionette.Application();
+var App = App || new Backbone.Marionette.Application();
 
-MyApp.addRegions({
+App.addRegions({
 	mainRegion: "body"
 });
 
@@ -16,28 +16,24 @@ PageLayout = Backbone.Marionette.Layout.extend({
 	regions: {
 		header: "#header",
 		content: "#content",
-		footer: "#footer"
+		footer: "#footer",
+		panel: "#panel"
 	}
 });
 var pageLayout = new PageLayout();
 pageLayout.render();
 
-TitleView = Backbone.Marionette.ItemView.extend({
-	template: function(serialized) {
-		var title = serialized.title;
-		return _.template('<%= args.title %>', {
-			title: title
-		}, {variable: 'args'});
-	}
+App.vent.on('all', function(event, model) {
+	console.log('DEBUG: Event - ' + event);
 });
 
-MyApp.addInitializer(function(options) {
-	Backbone.history.start();
-	MyApp.mainRegion.show(pageLayout);
+App.addInitializer(function(options) {
+	App.mainRegion.show(pageLayout);
+	App.vent.trigger('Mobile:Init');
 	$.mobile.initializePage();
 });
 
 $(document).ready(function() {
 	console.log('Starting Marionette...');
-	MyApp.start();
+	App.start();
 })
