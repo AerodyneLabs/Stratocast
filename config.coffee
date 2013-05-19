@@ -11,6 +11,7 @@ exports.config =
 					'vendor/underscore.js',
 					'vendor/json2.js'
 					'vendor/backbone.js',
+					'vendor/backbone.marionette.js',
 					'vendor/jqm-config.js',
 					'vendor/jquery.mobile-1.3.1.js'
 				]
@@ -24,3 +25,7 @@ exports.config =
 
 	conventions:
 		assets: /assets(\/|\\)/
+
+	modules:
+		wrapper: false
+		definition: false

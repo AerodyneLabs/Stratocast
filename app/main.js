@@ -1,60 +1,43 @@
-var HomeView = Backbone.View.extend({
-	template: _.template($('#home').html()),
+MyApp = new Backbone.Marionette.Application();
 
-	render: function(event) {
-		$(this.el).html(this.template());
-		return this;
+MyApp.addRegions({
+	mainRegion: "body"
+});
+
+PageLayout = Backbone.Marionette.Layout.extend({
+	template: "#page-layout",
+
+	tagName: 'div',
+
+	attributes: {
+		'data-role': 'page'
+	},
+
+	regions: {
+		header: "#header",
+		content: "#content",
+		footer: "#footer"
+	}
+});
+var pageLayout = new PageLayout();
+pageLayout.render();
+
+TitleView = Backbone.Marionette.ItemView.extend({
+	template: function(serialized) {
+		var title = serialized.title;
+		return _.template('<%= args.title %>', {
+			title: title
+		}, {variable: 'args'});
 	}
 });
 
-var AboutView = Backbone.View.extend({
-	template: _.template($('#about').html()),
-
-	render: function(event) {
-		$(this.el).html(this.template());
-		return this;
-	}
-});
-
-var AppRouter = Backbone.Router.extend({
-	routes: {
-		"": "home",
-		"about": "about"
-	},
-
-	initialize: function() {
-		$('.back').on('click', function(event) {
-			window.history.back();
-			return false;
-		});
-		this.firstPage = true;
-	},
-
-	home: function() {
-		console.log('#home');
-		this.changePage(new HomeView());
-	},
-
-	about: function() {
-		console.log('#about');
-		this.changePage(new AboutView());
-	},
-
-	changePage: function(page) {
-		$(page.el).attr('data-role', 'page');
-		page.render();
-		$('body').append($(page.el));
-		var transition = $.mobile.defaultPageTransition;
-		if(this.firstPage) {
-			transition = 'none';
-			this.firstPage = false;
-		}
-		$.mobile.changePage($(page.el), {changeHash:false, transition: transition});
-	}
+MyApp.addInitializer(function(options) {
+	Backbone.history.start();
+	MyApp.mainRegion.show(pageLayout);
+	$.mobile.initializePage();
 });
 
 $(document).ready(function() {
-	console.log('Ready');
-	app = new AppRouter();
-	Backbone.history.start();
+	console.log('Starting Marionette...');
+	MyApp.start();
 })

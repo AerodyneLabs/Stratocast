@@ -7,7 +7,7 @@ $(document).on("mobileinit", function() {
 		// disable ajax requests
 		$.mobile.ajaxEnabled = false;
 		// disable landing page
-		//$.mobile.autoInitializePage = false;
+		$.mobile.autoInitializePage = false;
 		// we will handle caching and cleaning
 		//$.mobile.page.prototype.options.domCache = false;
 
