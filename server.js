@@ -18,17 +18,16 @@ var jobs = kue.createQueue();
 app = express();
 
 app.configure(function() {
-	app.use(express.logger('dev'));
+	//app.use(express.logger('dev'));
 	app.use(express.static(__dirname + '/public'));
-	app.use(express.basicAuth(function(user, pass, callback) {
+	app.use('/backend', express.basicAuth(function(user, pass, callback) {
 		var result = (user === 'admin' && pass === 'password');
-		console.log(result);
 		callback(null, result);
-}));
-	app.use('/queue', kue.app);
+	}));
+	app.use('/backend/queue', kue.app);
 });
 
-http.createServer(app).listen(80);
-console.log('Listening on port 80');
+http.createServer(app).listen(8080);
+console.log('Listening on port 8080');
 
 ds.init();
