@@ -1,23 +1,13 @@
 $(document).on("mobileinit", function() {
 	// Disable jQM routing and component creation events
-		// disable hash-routing
-		$.mobile.hashListeningEnabled = false;
-		// disable anchor control
-		$.mobile.linkBindingEnabled = false;
-		// disable ajax requests
-		$.mobile.ajaxEnabled = false;
-		// disable landing page
-		$.mobile.autoInitializePage = false;
-		// we will handle caching and cleaning
-		//$.mobile.page.prototype.options.domCache = false;
+	$.mobile.hashListeningEnabled = false;	// disable hash-routing
+	$.mobile.linkBindingEnabled = false;	// disable anchor control
+	$.mobile.ajaxEnabled = false;	// disable ajax requests
 
 	// Fix compatibility issues
-		// not supported by all browsers
-		$.mobile.pushStateEnabled = false;
-		// fix phonegap back button
-		$.mobile.phonegapNavigationEnabled = true;
-		// prevent datepicker conflict
-		$.mobile.page.prototype.options.degradeInputs.date = true;
+	$.mobile.pushStateEnabled = false;	// not supported by all browsers
+	$.mobile.phonegapNavigationEnabled = true;	// fix phonegap back button
+	$.mobile.page.prototype.options.degradeInputs.date = true;	// prevent datepicker conflict
 
 	// Remove page from DOM when it's being replaced
 	$('div[data-role="page"]').on('pagehide', function(event, ui) {

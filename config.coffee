@@ -13,17 +13,19 @@ exports.config =
 					'vendor/backbone.js',
 					'vendor/backbone.marionette.js',
 					'vendor/jqm-config.js',
-					'vendor/jquery.mobile-1.3.1.js'
+					'vendor/jquery.mobile-1.3.1.js',
+					'app/main.js'
 				]
 				after: [
-					'app/main.js'
 				]
 
 		stylesheets:
 			joinTo:
 				'app.css': /^(app|vendor)/
 			order:
-				before: []
+				before: [
+					'vendor/jquery.mobile-1.3.1.css'
+				]
 				after: []
 
 	conventions:
