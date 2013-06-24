@@ -21,6 +21,15 @@ App.PageLayout = Backbone.Marionette.Layout.extend({
 	}
 });
 
+// define a generic two column layout
+App.ColumnLayout = Backbone.Marionette.Layout.extend({
+	template: '#column-layout',
+	regions: {
+		left: '#col-left',
+		right: '#col-right'
+	}
+});
+
 // Define a generic title view
 App.TitleView = Backbone.Marionette.ItemView.extend({
 	template: function(ser) {
@@ -35,6 +44,22 @@ App.TitleView = Backbone.Marionette.ItemView.extend({
 		return {title: this.title};
 	},
 	tagName: 'span'
+});
+
+// Define a generic text view
+App.TextView = Backbone.Marionette.ItemView.extend({
+	template: function(ser) {
+		var text = ser.text;
+		return _.template(
+			'<%= data.text %>',
+			{text : text},
+			{variable: 'data'}
+		);
+	},
+	serializeData: function() {
+		return {text: this.text};
+	},
+	tagName: 'p'
 });
 
 // Log all events for debugging
@@ -52,6 +77,20 @@ var Applications = Backbone.Collection.extend({
 	model: App.Application
 });
 App.Applications = new Applications();
+
+App.fixGeometry = function() {
+	var winHeight = $(window).innerHeight();
+	var headHeight = $('[data-role="header"]').outerHeight();
+	var footHeight = $('[data-role="footer"]').outerHeight();
+	var content = $('[data-role="content"]');
+	var padHeight = content.outerHeight() - content.height();
+	if(headHeight != null && footHeight != null) {
+		var contentHeight = winHeight - headHeight - footHeight - padHeight - 14;
+		content.height(contentHeight);
+	}
+};
+
+$(window).bind('orientationchange resize pageshow', App.fixGeometry);
 
 // Start the application
 $(document).ready(function() {

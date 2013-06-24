@@ -42,8 +42,11 @@ App.module("Landing", function(Mod, App, Backbone, Marionette, $, _) {
 	App.vent.on('Landing:Display', function() {
 		var layout = new App.PageLayout({id: 'home'});
 		App.mainRegion.show(layout);
+		var cols = new App.ColumnLayout();
+		layout.content.show(cols);
 		layout.header.show(Mod.TitleView);
-		layout.content.show(Mod.ApplicationsView);
+		cols.left.show(Mod.TextView);
+		cols.right.show(Mod.ApplicationsView);
 		$('#home').show();
 		$.mobile.changePage('#home', {changeHash:false, transition: 'none'});
 	});
@@ -59,6 +62,8 @@ App.module("Landing", function(Mod, App, Backbone, Marionette, $, _) {
 		console.log('Landing:Post-Start');
 		Mod.TitleView = new App.TitleView();
 		Mod.TitleView.title = 'Stratocast Webtools';
+		Mod.TextView = new App.TextView();
+		Mod.TextView.text = 'Welcome to the Stratocast Webtools designed to help plan high-altitude weather balloon missions to near-space. The tools to the right will allow you to conduct flight predictions and change parameters to give you the best opportunity for the mission you are planning.'
 		Mod.ApplicationsView = new AppsView({
 			collection: App.Applications
 		});
