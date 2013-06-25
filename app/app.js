@@ -1,3 +1,17 @@
+define([
+	'jquery',
+	'underscore',
+	'backbone'
+], function($, _, Backbone) {
+	var initialize = function() {
+		// blah
+	};
+
+	return {
+		initialize: initialize
+	};
+});
+
 // Create the application object if it doesn't already exist
 var App = App || new Backbone.Marionette.Application();
 
