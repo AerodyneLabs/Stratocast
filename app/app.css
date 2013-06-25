@@ -1,0 +1,21 @@
+html, body {
+	height: 100%;
+}
+
+.ui-content {
+	height: 100%;
+}
+
+#col-left {
+	float: left;
+	width: 50%;
+}
+
+#col-right {
+	float: right;
+	width: 50%;
+}
+
+.hidden {
+	display: none;
+}
