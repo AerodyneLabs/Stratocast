@@ -24,12 +24,11 @@
     "clean-css-brunch": "~1.5.1",
     "uglify-js-brunch": "~1.5.1",
     "kue": "~0.6.2",
-    "sprintf": "~0.1.1"
+    "sprintf": "~0.1.1",
+    "handlebars": "~1.0.12"
   },
   "scripts": {
     "start": "node server.js",
-    "autobuild-server": "nodemon server.js",
-    "build-client": "brunch build",
-    "autobuild-client": "brunch watch"
+    "test": "node client-test.js"
   }
 }

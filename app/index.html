@@ -1,40 +1,22 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Stratocast - Online HAB Flight Prediction</title>
-	<link rel="stylesheet" href="app.css">
-	<script data-main="main" src="lib/require.js"></script>
+	<link rel="sytlesheet" type="text/css" href="lib/bootstrap.css" media="screen">
+	<script data-main="app" src="lib/require.js"></script>
 </head>
 
-<script type="text/template" id="apps-view-template">
-	<h2 class="title">Applications</h2>
-</script>
-
-<script type="text/template" id="app-view-template">
-	<span class="application-icon"><%= icon %></span>
-	<h3 class="application-name"><%= name %></h3>
-	<p class="application-description"><%= description %></p>
-</script>
-
-<script type="text/template" id="page-layout">
-	<div data-role="header">
-		<a href="" data-rel="back" class="back">Back</a>
-		<h1 id="header"></h1>
-		<a href="#about">About</a>
-	</div>
-	<div id="content" data-role="content"></div>
-	<div id="footer" data-role="footer" data-position="fixed" class="ui-bar">Ready</div>
-</script>
-
-<script type="text/template" id="column-layout">
-	<div id="col-left"></div>
-	<div id="col-right"></div>
-</script>
-
 <body>
-	<div data-role="page" id="empty"></div>
+	<div id="header" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" href="#">Stratocast</a>
+		</div>
+	</div>
+	<div id="content">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elit et eros interdum posuere. Proin semper nisl vel velit tristique pulvinar. Aliquam in interdum felis. Phasellus ac nibh placerat, malesuada tortor quis, cursus turpis. Integer commodo suscipit nunc et lacinia. Praesent gravida metus sit amet arcu pulvinar, et rhoncus quam imperdiet. Integer vel libero magna. Phasellus ultrices interdum nunc, bibendum condimentum felis vestibulum sit amet. Vivamus id consequat velit, pellentesque pulvinar nunc. Proin pharetra porta leo, a malesuada arcu suscipit vel. Nullam volutpat placerat eros nec aliquam. Integer eget quam risus. Aliquam erat volutpat. Sed sed mollis nisi, non pulvinar dui. Fusce et quam non urna suscipit viverra a nec dolor. Vivamus elementum diam a commodo fringilla.</p>
+
+		<p>Suspendisse pulvinar elit et mauris malesuada eleifend. Fusce et dolor elit. Sed eleifend ante id ipsum sodales, et rhoncus erat accumsan. Etiam iaculis non erat et egestas. Sed ut justo a neque tincidunt auctor at in augue. Sed sodales mi ac orci hendrerit molestie. Praesent fermentum faucibus mi. Sed in eros eget augue vehicula hendrerit non vel felis. Phasellus aliquam mi nec malesuada consequat. Ut gravida lorem ut diam porttitor faucibus. Sed vehicula tempus metus, eget blandit neque varius nec. Aenean dui justo, dictum non mollis at, tempus id mauris. Sed in purus purus. Quisque facilisis neque venenatis est pellentesque aliquet. Morbi tincidunt purus vitae sapien interdum gravida.</p>
+	</div>
 </body>
 
 </html>
