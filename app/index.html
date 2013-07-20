@@ -1,21 +1,33 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Stratocast - Online HAB Flight Prediction</title>
-	<link rel="sytlesheet" type="text/css" href="lib/bootstrap.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="app.css">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap-responsive.css">
 	<script data-main="app" src="lib/require.js"></script>
 </head>
 
 <body>
-	<div id="header" class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="navbar-inner">
-			<a class="brand" href="#">Stratocast</a>
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="brand" href="#">Stratocast</a>
+				<div id="header" class="nav-collapse collapse">
+					<!-- Header will be rendered here -->
+				</div>
+			</div>
 		</div>
 	</div>
-	<div id="content">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elit et eros interdum posuere. Proin semper nisl vel velit tristique pulvinar. Aliquam in interdum felis. Phasellus ac nibh placerat, malesuada tortor quis, cursus turpis. Integer commodo suscipit nunc et lacinia. Praesent gravida metus sit amet arcu pulvinar, et rhoncus quam imperdiet. Integer vel libero magna. Phasellus ultrices interdum nunc, bibendum condimentum felis vestibulum sit amet. Vivamus id consequat velit, pellentesque pulvinar nunc. Proin pharetra porta leo, a malesuada arcu suscipit vel. Nullam volutpat placerat eros nec aliquam. Integer eget quam risus. Aliquam erat volutpat. Sed sed mollis nisi, non pulvinar dui. Fusce et quam non urna suscipit viverra a nec dolor. Vivamus elementum diam a commodo fringilla.</p>
-
-		<p>Suspendisse pulvinar elit et mauris malesuada eleifend. Fusce et dolor elit. Sed eleifend ante id ipsum sodales, et rhoncus erat accumsan. Etiam iaculis non erat et egestas. Sed ut justo a neque tincidunt auctor at in augue. Sed sodales mi ac orci hendrerit molestie. Praesent fermentum faucibus mi. Sed in eros eget augue vehicula hendrerit non vel felis. Phasellus aliquam mi nec malesuada consequat. Ut gravida lorem ut diam porttitor faucibus. Sed vehicula tempus metus, eget blandit neque varius nec. Aenean dui justo, dictum non mollis at, tempus id mauris. Sed in purus purus. Quisque facilisis neque venenatis est pellentesque aliquet. Morbi tincidunt purus vitae sapien interdum gravida.</p>
+	<div id="content" class="container">
+		<!-- Content will be rendered here -->
 	</div>
 </body>
 

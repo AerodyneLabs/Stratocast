@@ -6,7 +6,8 @@ require.config({
 		bootstrap: 'lib/bootstrap',
 		backbone: 'lib/backbone',
 		marionette: 'lib/backbone.marionette',
-		handlebars: 'lib/handlebars'
+		handlebars: 'lib/handlebars',
+		modulehelper: 'modules/modulehelper'
 	},
 
 	shim: {
@@ -27,21 +28,50 @@ require.config({
 		marionette: {
 			deps: ['backbone'],
 			exports: 'Marionette'
+		},
+		modulehelper: {
+			deps: ['marionette']
 		}
 	}
 });
 
-require(['marionette', 'bootstrap','handlebars'], function(Marionette) {
+require(['marionette', 'bootstrap', 'handlebars', 'modulehelper'], function(Marionette) {
+	// Define the applications available
+	var options = {
+		applications: [
+			{
+				title: 'Forward Prediction',
+				description: 'Run a detailed prediction from launch to landing.',
+				icon: 'favicon.ico',
+				event: 'ForwardPrediction:Display'
+			}
+		]
+	};
+
+	// Use handlebars instead of underscore templates
+	Marionette.TemplateCache.prototype.compileTemplate = function(template) {
+		return Handlebars.compile(template);
+    };
+
 	// Create Marionette Application
 	window.App = new Marionette.Application();
+
+	// Define application regions
+	App.addRegions({
+		header: '#header',
+		content: '#content'
+	});
 
 	// Log events to console for debug
 	App.vent.on('all', function(event) {
 		console.log('Event: ' + event);
 	});
 
-	require(['modules/main'], function() {
-		App.vent.trigger('require');
-		App.start();
+	// Init history
+	var router = new Marionette.AppRouter();
+	Backbone.history.start();
+
+	require(['modules/main/loader'], function() {
+		App.start(options);
 	});
 });

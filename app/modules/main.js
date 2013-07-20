@@ -1,11 +1,3 @@
-App.module("Main", function(Main) {
-
-	App.addInitializer(function() {
-		console.log('main:init');
-	});
-
-});
-
 /*
 // Create the application object if it doesn't already exist
 var App = App || new Backbone.Marionette.Application();
