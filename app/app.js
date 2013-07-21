@@ -41,9 +41,25 @@ require(['marionette', 'bootstrap', 'handlebars', 'modulehelper'], function(Mari
 		applications: [
 			{
 				title: 'Forward Prediction',
-				description: 'Run a detailed prediction from launch to landing.',
-				icon: 'favicon.ico',
+				description: 'Run a detailed prediction to find the landing site.',
+				icon: 'icon-play',
 				event: 'ForwardPrediction:Display'
+			}, {
+				title: 'Reverse Prediction',
+				description: 'Run a detailed prediction to find the launch site .',
+				icon: 'icon-play',
+				iconClass: 'icon-flip-horizontal',
+				event: 'ReversePrediction:Display'
+			}, {
+				title: 'Quick Prediction',
+				description: 'Run a simple prediction.',
+				icon: 'icon-fast-forward',
+				event: 'QuickPrediction:Display'
+			}, {
+				title: 'Historical Prediction',
+				description: 'Run a prediction for a date in the past.',
+				icon: 'icon-time',
+				event: 'HistoricalPrediction:Display'
 			}
 		]
 	};
