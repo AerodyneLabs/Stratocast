@@ -83,7 +83,9 @@ require(['marionette', 'bootstrap', 'handlebars', 'modulehelper'], function(Mari
 		console.log('Event: ' + event);
 	});
 
-	require(['modules/main/loader'], function() {
-		App.start(options);
+	require(['modules/predictor/loader'], function() {
+		require(['modules/main/loader'], function() {
+			App.start(options);
+		});
 	});
 });
