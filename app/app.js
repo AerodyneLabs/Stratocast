@@ -83,10 +83,6 @@ require(['marionette', 'bootstrap', 'handlebars', 'modulehelper'], function(Mari
 		console.log('Event: ' + event);
 	});
 
-	// Init history
-	var router = new Marionette.AppRouter();
-	Backbone.history.start();
-
 	require(['modules/main/loader'], function() {
 		App.start(options);
 	});

@@ -1,24 +1,28 @@
 App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
-	
-	this.AppModel = Backbone.Model.extend({});
-	this.AppCollection = Backbone.Collection.extend({
-		model: this.AppModel
+
+	Main.Controller = Marionette.Controller.extend({
+
+		homePage: function() {
+			App.vent.trigger('HomePage:Display');
+		},
+
+		aboutPage: function() {
+			App.vent.trigger('AboutPage:Display');
+		},
+
+		contactPage: function() {
+			App.vent.trigger('ContactPage:Display');
+		}
+
 	});
 
-	this.show = function() {
-		this.appCollection = new this.AppCollection(this.options.applications);
+	App.vent.on('HomePage:Display', function() {
+		App.content.show(Main.bodyView);
+		Main.bodyView.right.show(Main.applistView);
+	});
 
-		this.bodyView = new this.views.BodyView();
-		this.applistView = new this.views.ApplistView({
-			collection: this.appCollection
-		});
+	App.vent.on('AboutPage:Display', function() {});
 
-		App.content.show(this.bodyView);
-		this.bodyView.right.show(this.applistView);
-	};
-
-	this.onTemplatesLoaded = function() {
-		this.show();
-	};
+	App.vent.on('ContactPage:Display', function() {});
 
 });

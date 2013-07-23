@@ -11,15 +11,17 @@ var dependencies = [
 	'modules/main/views/app',
 	'modules/main/views/applist',
 	'modules/main/views/body',
-	'modules/main/controller'
+	'modules/main/controller',
+	'modules/main/router',
+	'modules/main/main'
 ];
 
 define(dependencies, function() {
 	App.module("Main", function(Main, Fleet, Backbone, Marionette, $, _) {
-		App.addInitializer(function(options) {
-			console.log('Main:Init');
-			Marionette.ModuleHelper.loadModuleTemplates(App.Main, App.Main.show);
-			Main.options = options;
+		Main.addInitializer(function(options) {
+			Marionette.ModuleHelper.loadModuleTemplates(App.Main, function() {
+				Main.init(options);
+			});
 		});
 	});
 });
