@@ -17,6 +17,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			default:
 				App.content.show(Mod.wizardLayout);
 				Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+				Mod.leftSidebarLayout.sidebar.show(Mod.locationEditor);
 				Backbone.history.navigate('pred/forward/1');
 		}
 	});

@@ -7,7 +7,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		});
 
 		// Create models and collections
-		
+		Mod.locationEditor = new Mod.views.FlightLocationEditor();
 
 		// Create views
 		Mod.wizardLayout = new Mod.views.WizardLayout();
