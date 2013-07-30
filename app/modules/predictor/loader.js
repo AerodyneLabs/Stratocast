@@ -9,6 +9,7 @@ App.module("Predictor", function(Mod) {
 
 var dependencies = [
 	'modules/predictor/views/flightLocationEditor',
+	'modules/predictor/views/flightParametersEditor',
 	'modules/predictor/views/wizardBody',
 	'modules/predictor/views/leftSidebar',
 	'modules/predictor/controller',
