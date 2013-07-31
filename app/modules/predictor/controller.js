@@ -20,6 +20,12 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 				Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
 				Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightParametersEditor());
 				break;
+			case 3:
+				Backbone.history.navigate('pred/forward/3');
+				App.content.show(Mod.wizardLayout);
+				Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+				Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor());
+				break;
 			default:
 				// Step One
 				Backbone.history.navigate('pred/forward/1');
