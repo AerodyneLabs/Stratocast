@@ -1,12 +1,54 @@
-/* Fix header bar overlap */
-/*body {
-	padding-top: 50px;
-}
-@media screen and (max-width: 768px) {
-	body {
-		padding-top: 0px;
-	}
-}*/
 #applist .media i {
 	text-align: center;
+}
+
+#calendar th {
+	text-align: center;
+	width: 14.2857142857%;
+}
+
+#calendar .forecast {
+	width: 100%;
+	clear: both;
+	text-align: center;
+	font-size: smaller;
+}
+
+@media (max-width: 600px) {
+	#calendar table,
+	#calendar thead,
+	#calendar tbody,
+	#calendar th,
+	#calendar td,
+	#calendar tr {
+		display: block;
+	}
+
+	#calendar thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#calendar td { 
+		margin-top: 0px;
+	}
+
+	#calendar td:before {
+		content: attr(data-day);
+		display: block;
+		font-weight: bold;
+	}
+
+	#calendar .media-heading {
+		float: left;
+	}
+    
+	#calendar .forecast {
+		clear: none;
+	}
+
+	#calendar .unused {
+		display: none;
+	}
 }
