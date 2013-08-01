@@ -11,6 +11,8 @@ var dependencies = [
 	'modules/predictor/views/flightLocationEditor',
 	'modules/predictor/views/flightParametersEditor',
 	'modules/predictor/views/flightTimeEditor',
+	'modules/predictor/views/flightCalendarEditor',
+	'modules/predictor/views/calendarDayView',
 	'modules/predictor/views/wizardBody',
 	'modules/predictor/views/leftSidebar',
 	'modules/predictor/controller',
