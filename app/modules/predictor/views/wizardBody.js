@@ -1,4 +1,5 @@
 App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
+
   Mod.views.WizardLayout = Marionette.Layout.extend({
     template: 'wizardBody',
     tagName: 'div',
@@ -8,4 +9,5 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       body: '#body'
     }
   });
+  
 });

@@ -1,4 +1,5 @@
 App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
+
   Mod.views.LeftSidebarLayout = Marionette.Layout.extend({
     template: 'leftSidebar',
     tagName: 'div',
@@ -7,4 +8,5 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       main: '#main'
     }
   });
+
 });

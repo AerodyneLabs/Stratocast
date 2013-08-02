@@ -42,7 +42,7 @@ Marionette.ModuleHelper = (function(Marionette, _) {
     _.each(loadTemplatePromises, function(aLoadPromise) {
       $.when(aLoadPromise).done(function() {
         templatesRemainingToLoad--;
-        if (templatesRemainingToLoad == 0)
+        if (templatesRemainingToLoad === 0)
           loadAllTemplates.resolveWith(context);
       });
     });
@@ -57,7 +57,7 @@ Marionette.ModuleHelper = (function(Marionette, _) {
     var msg;
     var err;
 
-    if (!templateId || templateId.length == 0) {
+    if (!templateId || templateId.length === 0) {
       err = new Error('No templateId was specified.');
       err.name = "NoTemplateSpecified";
       throw err;
@@ -66,7 +66,7 @@ Marionette.ModuleHelper = (function(Marionette, _) {
     var url = moduleHelper.templatePath + templateId + moduleHelper.templateExt;
 
     $.get(url, function(serverTemplate) {
-      if (!serverTemplate || serverTemplate.length == 0) {
+      if (!serverTemplate || serverTemplate.length === 0) {
         msg = "Could not find template: '" + templateId + "'";
         err = new Error(msg);
         err.name = "NoTemplateError";

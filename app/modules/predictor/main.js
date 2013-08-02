@@ -11,10 +11,6 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     // Create layouts
     Mod.wizardLayout = new Mod.views.WizardLayout();
     Mod.leftSidebarLayout = new Mod.views.LeftSidebarLayout();
-
-    // Create views
-    //Mod.locationEditor = new Mod.views.FlightLocationEditor();
-    //Mod.parameterEditor = new Mod.views.FlightParametersEditor();
   };
 
 });

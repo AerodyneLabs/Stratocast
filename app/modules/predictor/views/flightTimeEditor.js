@@ -14,7 +14,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     },
 
     prev: function() {
-      App.vent.trigger('ForwardPrediction:Display', 2)
+      App.vent.trigger('ForwardPrediction:Display', 2);
     }
   });
 

@@ -8,6 +8,6 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
       'contact': 'contactPage'
     }
 
-  })
+  });
 
 });
