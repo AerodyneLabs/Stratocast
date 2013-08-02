@@ -4,9 +4,17 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		template: 'flightCalendarEditor',
 		tagName: 'div',
 		id: 'calendar',
-		events: {
-			'click #next': 'next',
-			'click #prev': 'prev'
+		itemView: Mod.views.CalendarDayView,
+		
+		appendHtml: function(compositeView, itemView, index) {
+			// Default implementation
+			// compositeView.$('tbody').append(itemView.el);
+			if(index === 0) {
+				// If first item, apply padding
+			}
+			if(false) {
+				// If first day of week, create new row
+			}
 		}
 	});
 
