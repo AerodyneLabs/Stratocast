@@ -4,7 +4,9 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
 		model: Main.AppModel,
 		tagName: 'li',
 		className: 'media',
-		events: {'click': 'appClicked'},
+		events: {
+			'click': 'appClicked'
+		},
 		appClicked: function() {
 			App.vent.trigger(this.model.get('event'));
 		}
