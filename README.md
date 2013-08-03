@@ -1,3 +1,3 @@
-HAB Web Project
+Stratocast
 ===============
-Working title
+Online stratospheric (high altitude) balloon flight prediction system.
