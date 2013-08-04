@@ -12,14 +12,14 @@ var mongoose = require('mongoose');
 //});
 
 // Create the cluster
-if(cluster.isMaster) { // Master process
+if (cluster.isMaster) { // Master process
   //ds.init();
 
   // Count the number of cpus
   var numCPUs = require('os').cpus().length;
 
   // Create a worker for each cpu
-  for(var i=0; i < numCPUs; i++) {
+  for (var i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
 
