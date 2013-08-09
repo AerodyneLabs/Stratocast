@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
-
-var Sounding = new Schema({
+var Sounding = new mongoose.Schema({
   timestamp: {
-    type: Date
+    type: Date,
+    index: true
   },
   location: {
-    type: [Number]
+    type: {
+      type: [Number],
+      index: '2d'
+    }
   },
   analysis: {
     type: Date
@@ -15,24 +17,16 @@ var Sounding = new Schema({
   duration: {
     type: Number
   },
-  altitude: {
-    type: [Number]
-  },
-  pressure: {
-    type: [Number]
-  },
-  temperature: {
-    type: [Number]
-  },
-  dewPoint: {
-    type: [Number]
-  },
-  windU: {
-    type: [Number]
-  },
-  windV: {
-    type: [Number]
-  }
+  data: [{
+    altitude: Number,
+    pressure: Number,
+    temperature: Number,
+    dewPoint: Number,
+    windU: Number,
+    windV: Number
+  }]
 });
+
+Sounding.set('autoIndex', false);
 
 module.exports = mongoose.model('Sounding', Sounding);
