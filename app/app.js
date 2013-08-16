@@ -7,6 +7,7 @@ require.config({
     backbone: 'lib/backbone',
     marionette: 'lib/backbone.marionette',
     handlebars: 'lib/handlebars',
+    leaflet: '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
     modulehelper: 'modules/modulehelper'
   },
 
@@ -29,13 +30,16 @@ require.config({
       deps: ['backbone'],
       exports: 'Marionette'
     },
+    leaflet: {
+      exports: 'L'
+    },
     modulehelper: {
       deps: ['marionette']
     }
   }
 });
 
-require(['marionette', 'bootstrap', 'handlebars', 'modulehelper'], function(Marionette) {
+require(['marionette', 'bootstrap', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
   // Define the applications available
   var options = {
     applications: [{
