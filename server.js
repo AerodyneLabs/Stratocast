@@ -1,15 +1,8 @@
 var PORT = 8000;
 
 var cluster = require('cluster');
-var mongoose = require('mongoose');
 
 //var ds = require('./lib/data-store');
-
-// Connect to MongoDB
-//mongoose.connect('mongodb://127.0.0.1/habweb');
-//mongoose.connection.on('open', function() {
-//  console.log('Connected to Mongoose');
-//});
 
 // Create the cluster
 if (cluster.isMaster) { // Master process
@@ -30,8 +23,9 @@ if (cluster.isMaster) { // Master process
 
   console.log('Application started on port ' + PORT);
 } else { // Worker process
-  // Include express
+  // Include libraries
   var express = require('express');
+  var mongoose = require('mongoose');
 
   // Create an express application
   app = express();
@@ -52,6 +46,9 @@ if (cluster.isMaster) { // Master process
 
   // Bind to a port
   app.listen(PORT);
+
+  // Connect to MongoDB
+  mongoose.connect('mongodb://127.0.0.1/windData');
 
   console.log('Worker ' + cluster.worker.process.pid + ' running.');
 }
