@@ -1,7 +1,7 @@
 // File: app.js
 require.config({
   paths: {
-    underscore: 'lib/underscore',
+    underscore: ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js', 'lib/underscore'],
     jquery: 'lib/jquery-1.9.1',
     bootstrap: ['//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min', 'lib/boostrap'],
     backbone: ['//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min', 'lib/backbone'],
