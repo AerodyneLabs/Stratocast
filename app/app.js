@@ -3,7 +3,7 @@ require.config({
   paths: {
     underscore: 'lib/underscore',
     jquery: 'lib/jquery-1.9.1',
-    bootstrap: 'lib/bootstrap',
+    bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min',
     backbone: 'lib/backbone',
     marionette: 'lib/backbone.marionette',
     handlebars: 'lib/handlebars',
