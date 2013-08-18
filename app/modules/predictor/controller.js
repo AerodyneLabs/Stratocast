@@ -33,6 +33,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
         Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor());
+        Mod.leftSidebarLayout.main.show(new Mod.views.MapView());
     }
   });
 
