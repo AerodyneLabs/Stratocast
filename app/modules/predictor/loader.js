@@ -8,6 +8,7 @@ App.module("Predictor", function(Mod) {
 });
 
 var dependencies = [
+  'modules/predictor/views/mapView',
   'modules/predictor/views/calendarDayView',
   'modules/predictor/views/flightLocationEditor',
   'modules/predictor/views/flightParametersEditor',
