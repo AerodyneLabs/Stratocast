@@ -6,7 +6,7 @@ require.config({
     bootstrap: ['//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min', 'lib/boostrap'],
     backbone: ['//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min', 'lib/backbone'],
     marionette: ['//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.4-bundled/backbone.marionette.min', 'lib/backbone.marionette'],
-    handlebars: 'lib/handlebars',
+    handlebars: ['//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min', 'lib/handlebars'],
     leaflet: '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
     modulehelper: 'modules/modulehelper'
   },
