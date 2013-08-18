@@ -4,7 +4,7 @@ require.config({
     underscore: 'lib/underscore',
     jquery: 'lib/jquery-1.9.1',
     bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min',
-    backbone: 'lib/backbone',
+    backbone: ['//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min', 'lib/backbone'],
     marionette: 'lib/backbone.marionette',
     handlebars: 'lib/handlebars',
     leaflet: '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
