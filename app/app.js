@@ -25,7 +25,10 @@ require.config({
       '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min',
       'lib/handlebars'
     ],
-    leaflet: '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
+    leaflet: [
+      '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
+      'lib/leaflet'
+    ],
     d3: [
       '//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min',
       'lib/d3.min'
