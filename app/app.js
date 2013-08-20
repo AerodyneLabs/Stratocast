@@ -26,6 +26,10 @@ require.config({
       'lib/handlebars'
     ],
     leaflet: '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
+    d3: [
+      '//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min',
+      'lib/d3.min'
+    ],
     modulehelper: 'modules/modulehelper'
   },
 
@@ -50,6 +54,9 @@ require.config({
     },
     leaflet: {
       exports: 'L'
+    },
+    d3: {
+      exports: 'd3'
     },
     modulehelper: {
       deps: ['marionette']
