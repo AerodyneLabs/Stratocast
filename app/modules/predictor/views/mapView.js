@@ -11,6 +11,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			$(window).on('resize', this.resize);
 		},
 
+		onClick: function(e) {
+			App.vent.trigger('Map:Click', e);
+		},
+
 		onShow: function() {
 			// TODO Map attribution
 			var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',{
@@ -39,6 +43,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 				center: new L.LatLng(42, -94),
 				zoom: 10
 			});
+			this.map.on('click', this.onClick);
 			L.control.layers(baseMaps).addTo(this.map);
 		},
 
@@ -51,6 +56,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		onClose: function() {
 			// Unbind resize event
 			$(window).off('resize', this.resize);
+			this.map.off('click', this.onClick);
 		}
 	});
 
