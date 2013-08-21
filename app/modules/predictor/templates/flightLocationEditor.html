@@ -3,7 +3,14 @@
 	<p>Click your launch site on the map or enter it in the text box below.</p>
 	<div class="form-group">
 		<label for="location">Location</label>
-		<input type="text" id="location" placeholder="42.01, -93.41" autofocus class="form-control">
+		<div class="input-group">
+			<input type="search" id="location" placeholder="42.01, -93.41" autofocus class="form-control">
+			<span class="input-group-btn">
+				<button id="search" class="btn btn-default" type="button">
+					<i id="search-icon" class="icon-search"></i>
+				</button>
+			</span>
+		</div>
 		<p class="help-block">City, Zipcode or Lat/Lon</p>
 	</div>
 	<div class="btn-group pull-right">
