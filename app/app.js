@@ -10,7 +10,7 @@ require.config({
       'lib/jquery-1.9.1'
     ],
     bootstrap: [
-      '//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min',
+      '//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min',
       'lib/boostrap'
     ],
     backbone: [
