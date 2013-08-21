@@ -15,6 +15,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			App.vent.trigger('Map:Click', e);
 		},
 
+		centerMap: function(lat, lon) {
+			map.panTo(new L.LatLng(lat, lon));
+		},
+
 		onShow: function() {
 			// TODO Map attribution
 			var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',{
@@ -38,13 +42,16 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 				"Hybrid": hybGroup
 			};
 			this.resize();
-			this.map = L.map('map', {
+			map = L.map('map', {
 				layers: [mapLayer],
 				center: new L.LatLng(42, -94),
 				zoom: 10
 			});
-			this.map.on('click', this.onClick);
-			L.control.layers(baseMaps).addTo(this.map);
+			L.control.layers(baseMaps).addTo(map);
+
+			// Bind events
+			map.on('click', this.onClick);
+			App.vent.on('Map:Center', this.centerMap);
 		},
 
 		resize: function() {
@@ -54,9 +61,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		},
 
 		onClose: function() {
-			// Unbind resize event
+			// Unbind events
 			$(window).off('resize', this.resize);
-			this.map.off('click', this.onClick);
+			map.off('click', this.onClick);
+			App.vent.off('Map:Center', this.centerMap);
 		}
 	});
 
