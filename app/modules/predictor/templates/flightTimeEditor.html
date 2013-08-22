@@ -3,7 +3,14 @@
 	<p>Enter your launch time below.</p>
 	<div class="form-group">
 		<label for="time">Launch Time</label>
-		<input id="time" type="text" class="form-control">
+		<div class="input-group">
+			<input id="time" type="text" class="form-control" autofocus placeholder="12:00 PM">
+			<span class="input-group-btn">
+				<button id="button" class="btn btn-default" type="button">
+					<i id="icon" class="icon-time"></i>
+				</button>
+			</span>
+		</div>
 	</div>
 	<div class="btn-group pull-right">
 		<button id="prev" type="button" class="btn">Back</button>
