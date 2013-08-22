@@ -34,7 +34,12 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      */
     submitOnEnter: function(e) {
       // Was enter pressed
-      if (e.keyCode == 13) this.search();
+      if (e.keyCode == 13) {
+        // Perform the search
+        this.search();
+        // Prevent further action
+        return false;
+      }
     },
 
     /**
