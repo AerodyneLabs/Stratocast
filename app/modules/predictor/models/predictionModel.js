@@ -4,9 +4,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		defaults: {
 			'launchTime': Date.now(),
 			'brand': 'Kaymont',
-			'size': 0.6,
-			'mass': 1.8,
-			'lift': 3.6
+			'size': '800g',
+			'mass': '1.5',
+			'lift': '2'
 		}
 	});
 
