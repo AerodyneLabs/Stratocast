@@ -18,8 +18,12 @@ require.config({
       'lib/backbone'
     ],
     syphon: [
-      'http://cdnjs.cloudflare.com/ajax/libs/backbone.syphon/0.4.1/backbone.syphon.min',
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.syphon/0.4.1/backbone.syphon.min',
       'lib/backbone.syphon.min'
+    ],
+    localStorage: [
+      '//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min',
+      'lib/backbone.localStorage-min'
     ],
     marionette: [
       '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.4-bundled/backbone.marionette.min',
@@ -58,6 +62,9 @@ require.config({
     syphon: {
       deps: ['backbone']
     },
+    localStorage: {
+      deps: ['backbone']
+    },
     marionette: {
       deps: ['backbone'],
       exports: 'Marionette'
@@ -74,7 +81,7 @@ require.config({
   }
 });
 
-require(['marionette', 'bootstrap', 'syphon', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
+require(['marionette', 'bootstrap', 'syphon', 'localStorage', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
   // Define the applications available
   var options = {
     applications: [{
