@@ -17,6 +17,10 @@ require.config({
       '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min',
       'lib/backbone'
     ],
+    syphon: [
+      'http://cdnjs.cloudflare.com/ajax/libs/backbone.syphon/0.4.1/backbone.syphon.min',
+      'lib/backbone.syphon.min'
+    ],
     marionette: [
       '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.4-bundled/backbone.marionette.min',
       'lib/backbone.marionette'
@@ -51,6 +55,9 @@ require.config({
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
     },
+    syphon: {
+      deps: ['backbone']
+    },
     marionette: {
       deps: ['backbone'],
       exports: 'Marionette'
@@ -67,7 +74,7 @@ require.config({
   }
 });
 
-require(['marionette', 'bootstrap', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
+require(['marionette', 'bootstrap', 'syphon', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
   // Define the applications available
   var options = {
     applications: [{
