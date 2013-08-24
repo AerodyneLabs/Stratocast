@@ -7,6 +7,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     });
 
     // Create models and collections
+    Mod.currentPrediction = new (Mod.PredictionModel.extend({localStorage: new Backbone.LocalStorage("current")}))({id: 1});
+    Mod.currentPrediction.fetch();
 
     // Create layouts
     Mod.wizardLayout = new Mod.views.WizardLayout();
