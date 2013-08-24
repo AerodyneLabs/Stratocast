@@ -73,6 +73,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       var lng = data.results[0].locations[0].latLng.lng;
       // Update map with new coordinates
       App.vent.trigger('Map:Center', lat, lng);
+      // Update model with new coordinates
+      this.updateModel(lat, lng);
     },
 
     /**
@@ -92,7 +94,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      */
     geocodeComplete: function(jqXHR, status) {
       // Stop the spin animation
-      $('#search-icon').removeClass('icon-spin');
+      this.ui.icon.removeClass('icon-spin');
     },
 
     /**
@@ -116,7 +118,25 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      */
     setLatLon: function(e) {
       var str = Math.round(e.latlng.lat * 100) / 100 + ', ' + Math.round(e.latlng.lng * 100) / 100;
-      $('#location').val(str);
+      this.ui.location.val(str);
+      this.updateModel(e.latlng.lat, e.latlng.lng);
+    },
+
+    /**
+     * Store the current location in the current model
+     * @param  {Number} lat Current latitude
+     * @param  {Number} lon Current longitude
+     */
+    updateModel: function(lat, lon) {
+      Mod.currentPrediction.set({
+        'latitude': lat,
+        'longitude': lon
+      });
+      Mod.currentPrediction.save();
+    },
+
+    initialize: function() {
+      _.bindAll(this, 'setLatLon', 'geocodeHandler', 'geocodeComplete', 'geocodeError');
     }
   });
 
