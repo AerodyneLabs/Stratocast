@@ -13,7 +13,7 @@ setInterval(function() {
 }, 10000);
 
 updateSounding = function(error, key) {
-  if(error !== null) return;
+  if(error !== null || key === null) return;
   currentDownload = key;
   async.waterfall([
     function download(callback) {
