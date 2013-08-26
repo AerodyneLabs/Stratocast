@@ -24,10 +24,10 @@ updateSounding = function(error, key) {
     }
   ], function(err, result) {
     if(err) {
-      console.log('ERROR ' + err);
-      // TODO Requeue the download
+      ds.requeue(key);
+      console.log('Error updating ' + key + ' : ' + err);
     } else {
-      console.log(result);
+      console.log('Updated ' + key);
     }
     // Accept a new key now
     currentDownload = null;
