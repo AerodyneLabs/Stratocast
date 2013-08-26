@@ -1,7 +1,38 @@
 // Include libraries
+var async = require('async');
 var cluster = require('cluster');
 var express = require('express');
 var mongoose = require('mongoose');
+var ds = require('./lib/data-store');
+
+var currentDownload = null;
+setInterval(function() {
+  if(currentDownload === null) {
+    ds.popQueue(updateSounding);
+  }
+}, 10000);
+
+updateSounding = function(error, key) {
+  if(error !== null) return;
+  currentDownload = key;
+  async.waterfall([
+    function download(callback) {
+      ds.download(key, callback);
+    },
+    function preprocess(filename, callback) {
+      ds.preprocess(filename, callback);
+    }
+  ], function(err, result) {
+    if(err) {
+      console.log('ERROR ' + err);
+      // TODO Requeue the download
+    } else {
+      console.log(result);
+    }
+    // Accept a new key now
+    currentDownload = null;
+  });
+};
 
 // Create an express application
 app = express();
