@@ -1,8 +1,12 @@
 // Include libraries
 var cluster = require('cluster');
+var ds = require('./lib/data-store');
 
 // Count the number of cpus
 var numCPUs = require('os').cpus().length;
+
+// Initialize data store
+ds.init();
 
 // Create a worker for each cpu
 for (var i = 0; i < numCPUs; i++) {
