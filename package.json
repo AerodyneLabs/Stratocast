@@ -22,7 +22,8 @@
     "handlebars": "~1.0.12",
     "redis": "~0.8.4",
     "async": "~0.2.9",
-    "underscore": "~1.5.1"
+    "underscore": "~1.5.1",
+    "mongoskin": "~0.6.0"
   },
   "scripts": {
     "start": "node server.js",
