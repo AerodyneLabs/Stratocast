@@ -21,6 +21,9 @@ updateSounding = function(error, key) {
     },
     function preprocess(filename, callback) {
       ds.preprocess(filename, callback);
+    },
+    function parse(filename, callback) {
+      ds.parseSounding(filename, callback);
     }
   ], function(err, result) {
     if(err) {
