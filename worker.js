@@ -17,13 +17,10 @@ updateSounding = function(error, key) {
   currentDownload = key;
   async.waterfall([
     function download(callback) {
-      ds.download(key, callback);
+      ds.downloadSounding(key, callback);
     },
     function preprocess(filename, callback) {
-      ds.preprocess(filename, callback);
-    },
-    function parse(filename, callback) {
-      ds.parseSounding(filename, callback);
+      ds.preprocessSounding(filename, callback);
     }
   ], function(err, result) {
     if(err) {
