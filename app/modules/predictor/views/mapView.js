@@ -5,8 +5,13 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		tagName: 'div',
 		className: 'map-wrapper',
 		model: Mod.FlightModel,
+		ui: {
+			map: '#map'
+		},
 
 		initialize: function() {
+			// Bind events for this
+			_.bindAll(this, 'resize', 'centerMap');
 			// Bind resize event to manage map size
 			$(window).on('resize', this.resize);
 		},
@@ -16,7 +21,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		},
 
 		centerMap: function(lat, lon) {
-			map.panTo(new L.LatLng(lat, lon));
+			this.map.panTo(new L.LatLng(lat, lon));
 		},
 
 		onShow: function() {
@@ -42,28 +47,27 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 				"Hybrid": hybGroup
 			};
 			this.resize();
-			map = L.map('map', {
+			this.map = L.map('map', {
 				layers: [mapLayer],
 				center: new L.LatLng(42, -94),
 				zoom: 10
 			});
-			L.control.layers(baseMaps).addTo(map);
+			L.control.layers(baseMaps).addTo(this.map);
 
 			// Bind events
-			map.on('click', this.onClick);
+			this.map.on('click', this.onClick);
 			App.vent.on('Map:Center', this.centerMap);
 		},
 
 		resize: function() {
 			// TODO bottom padding
-			var mapEl = $('#map');
-			mapEl.height($(window).height() - mapEl.offset().top - 10);
+			this.ui.map.height($(window).height() - this.ui.map.offset().top - 10);
 		},
 
 		onClose: function() {
 			// Unbind events
 			$(window).off('resize', this.resize);
-			map.off('click', this.onClick);
+			this.map.off('click', this.onClick);
 			App.vent.off('Map:Center', this.centerMap);
 		}
 	});
