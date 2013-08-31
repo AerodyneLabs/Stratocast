@@ -51,6 +51,33 @@ app.configure(function() {
   app.use(express.static(__dirname + '/app'));
 });
 
+app.get('/api/sounding', function(req, res) {
+  var timestring = req.param('time');
+  var location = req.param('loc');
+  if(!timestring || !location) {
+    res.send(400, 'Bad Request!');
+    return;
+  }
+
+  location = location.split(',');
+  var lat = parseInt(location[0], 10);
+  var lng = parseInt(location[1], 10);
+  var timestamp = parseInt(timestring, 10);
+  if(isNaN(lat) || isNaN(lng) || isNaN(timestamp)) {
+    res.send(400, 'Bad Request!');
+    return;
+  }
+  var time = new Date(timestamp);
+
+  ds.getSounding(time, lat, lng, function(err, sounding) {
+    if(err) {
+      res.send(500, err);
+    } else {
+      res.send(200, JSON.stringify(sounding));
+    }
+  });
+});
+
 // Bind to a port
 app.listen(global.PORT);
 
