@@ -13,17 +13,23 @@
 </head>
 
 <body>
-	<div class="navbar navbar-inverse navbar-static-top">
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 		<div class="container">
-			<button class="navbar-toggle btn btn-default" data-toggle="collapse" data-target=".nav-collapse">
+		<div class="navbar-header">
+			<button class="navbar-toggle btn btn-default navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
 				<i class="icon-ellipsis-horizontal"></i>
 			</button>
 			<a class="navbar-brand" href="#">Stratocast</a>
-			<div id="header" class="nav-collapse collapse">
-				<!-- Header will be rendered here -->
-			</div>
 		</div>
-	</div>
+		<div id="header" class="collapse navbar-collapse">
+			<!-- Header will be rendered here -->
+			<ul class="nav navbar-nav">
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</div>
+		</div>
+	</nav>
 	<div id="content" class="container">
 		<!-- Content will be rendered here -->
 	</div>
