@@ -60,8 +60,8 @@ app.get('/api/sounding', function(req, res) {
   }
 
   location = location.split(',');
-  var lat = parseInt(location[0], 10);
-  var lng = parseInt(location[1], 10);
+  var lat = parseFloat(location[0], 10);
+  var lng = parseFloat(location[1], 10);
   var timestamp = parseInt(timestring, 10);
   if(isNaN(lat) || isNaN(lng) || isNaN(timestamp)) {
     res.send(400, 'Bad Request!');
