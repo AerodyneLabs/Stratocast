@@ -7,8 +7,20 @@ describe('AtmosphericProfile object', function() {
 
 	beforeEach(function() {
 		pro = new Profile();
-		obs1 = new Observation(2, 2, 2, 2, 2);
-		obs2 = new Observation(1, 1, 1, 1, 1);
+		obs1 = new Observation({
+			altitude: 2,
+			temperature: 2,
+			pressure: 2,
+			windU: 2,
+			windV: 2
+		});
+		obs2 = new Observation({
+			altitude: 1,
+			temperature: 1,
+			pressure: 1,
+			windU: 1,
+			windV: 1
+		});
 	});
 
 	it('fails gracefully with no data', function() {
@@ -48,11 +60,17 @@ describe('AtmosphericProfile object', function() {
 
 	it('interpolates by altitude between observations', function() {
 		// TODO Use values that better test interpolation
-		// TODO More robust testing
-		var ans = new Observation(1.5, 1.5, 1.5, 1.5, 1.5, 1.5);
-		var res = pro.getObservationAtAltitude(1.5);
-
 		pro.addObservation([obs1, obs2]);
+		
+		// TODO More robust testing
+		var ans = new Observation({
+			altitude: 1.5,
+			temperature: 1.5,
+			pressure: 1.5,
+			windU: 1.5,
+			windV: 1.5
+		});
+		var res = pro.getObservationAtAltitude(1.5);
 
 		expect(res).toEqual(ans);
 	});
