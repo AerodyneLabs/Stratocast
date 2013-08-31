@@ -27,17 +27,17 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		onShow: function() {
 			// TODO Map attribution
 			var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',{
-				attribution: 'Map data &copy;',
+				attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
 				maxZoom: 18,
 				subdomains: '1234'
 			});
 			var satLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',{
-				attribution: 'Map data &copy;',
+				attribution: '<br/>Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency',
 				maxZoom: 18,
 				subdomains: '1234'
 			});
 			var hybLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.jpg',{
-				attribution: 'Map data &copy;',
+				attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
 				maxZoom: 18,
 				subdomains: '1234'
 			});
@@ -53,6 +53,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 				zoom: 10
 			});
 			L.control.layers(baseMaps).addTo(this.map);
+
+			// Add scale
+			L.control.scale().addTo(this.map);
 
 			// Bind events
 			this.map.on('click', this.onClick);
