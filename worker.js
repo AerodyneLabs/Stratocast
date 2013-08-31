@@ -67,7 +67,11 @@ app.get('/api/sounding', function(req, res) {
     res.send(400, 'Bad Request!');
     return;
   }
+  
   var time = new Date(timestamp);
+  if(lng < 0) {
+    lng += 360;
+  }
 
   ds.getSounding(time, lat, lng, function(err, sounding) {
     if(err) {
