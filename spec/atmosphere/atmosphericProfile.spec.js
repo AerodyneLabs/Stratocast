@@ -66,7 +66,7 @@ describe('AtmosphericProfile object', function() {
 		var ans = new Observation({
 			altitude: 1.5,
 			temperature: 1.5,
-			pressure: 1.5,
+			pressure: 1.4142135623730951,
 			windU: 1.5,
 			windV: 1.5
 		});
