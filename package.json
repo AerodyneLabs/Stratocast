@@ -23,7 +23,8 @@
     "redis": "~0.8.4",
     "async": "~0.2.9",
     "underscore": "~1.5.1",
-    "mongoskin": "~0.6.0"
+    "mongoskin": "~0.6.0",
+    "numeric": "~1.2.6"
   },
   "scripts": {
     "start": "node server.js",
