@@ -105,7 +105,7 @@ app.get('/api/prediction', function(req, res) {
   params.mass = parseFloat(req.query.mass);
 
   var prediction = new Predictor(params);
-  prediction.run({tStep: 60}, function(err, result) {
+  prediction.run({tStep: 5}, function(err, result) {
     if(err) {
       res.send(500, err);
     } else {
