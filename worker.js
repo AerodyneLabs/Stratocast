@@ -4,6 +4,7 @@ var cluster = require('cluster');
 var express = require('express');
 var mongoose = require('mongoose');
 var ds = require('./lib/data-store');
+var Predictor = require('./lib/predictor');
 
 var currentDownload = null;
 setInterval(function() {
@@ -60,8 +61,8 @@ app.get('/api/sounding', function(req, res) {
   }
 
   location = location.split(',');
-  var lat = parseFloat(location[0], 10);
-  var lng = parseFloat(location[1], 10);
+  var lat = parseFloat(location[0]);
+  var lng = parseFloat(location[1]);
   var timestamp = parseInt(timestring, 10);
   if(isNaN(lat) || isNaN(lng) || isNaN(timestamp)) {
     res.send(400, 'Bad Request!');
@@ -69,15 +70,46 @@ app.get('/api/sounding', function(req, res) {
   }
   
   var time = new Date(timestamp);
-  if(lng < 0) {
-    lng += 360;
-  }
 
   ds.getSounding(time, lat, lng, function(err, sounding) {
     if(err) {
       res.send(500, err);
     } else {
       res.send(200, JSON.stringify(sounding));
+    }
+  });
+});
+
+app.get('/api/prediction', function(req, res) {
+  var params = {};
+
+  // Ensure start location
+  var location = req.param('loc');
+  location = location.split(',');
+  var lat = parseFloat(location[0]);
+  var lng = parseFloat(location[1]);
+  params.loc = [lng, lat];
+
+  // Ensure start time
+  if(Object.prototype.toString.call(req.query.time) !== '[object Date]') {
+    var timestamp = parseInt(req.query.time, 10);
+    if(isNaN(timestamp)) {
+      params.time = new Date();
+    } else {
+      params.time = new Date(timestamp);
+    }
+  }
+
+  params.balloon = req.query.balloon;
+  params.parachute = req.query.parachute;
+  params.mass = parseFloat(req.query.mass);
+
+  var prediction = new Predictor(params);
+  prediction.run({tStep: 60}, function(err, result) {
+    if(err) {
+      res.send(500, err);
+    } else {
+      res.send(200, result);
     }
   });
 });
