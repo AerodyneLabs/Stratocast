@@ -103,6 +103,14 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     onShow: function() {
       // Add event listener
       App.vent.on('Map:Click', this.setLatLon);
+      // Populate with current parameters
+      var lat = Mod.currentPrediction.get('latitude');
+      var lng = Mod.currentPrediction.get('longitude');
+      var str = Math.round(lat * 1000) / 1000 + ', ' + Math.round(lng * 1000) / 1000;
+      this.ui.location.val(str);
+      setTimeout(function() {
+        App.vent.trigger('Map:Center', lat, lng);
+      }, 500);
     },
 
     /**
@@ -117,7 +125,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      * Respond to map event by setting location string
      */
     setLatLon: function(e) {
-      var str = Math.round(e.latlng.lat * 100) / 100 + ', ' + Math.round(e.latlng.lng * 100) / 100;
+      var str = Math.round(e.latlng.lat * 1000) / 1000 + ', ' + Math.round(e.latlng.lng * 1000) / 1000;
       this.ui.location.val(str);
       this.updateModel(e.latlng.lat, e.latlng.lng);
     },
