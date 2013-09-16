@@ -6,7 +6,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			'brand': 'Kaymont',
 			'size': '800g',
 			'mass': '1.5',
-			'lift': '2'
+			'lift': '2',
+			'drag': 1.5,
+			'area': 0.6
 		}
 	});
 
