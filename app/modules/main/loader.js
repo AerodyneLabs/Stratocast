@@ -8,6 +8,7 @@ App.module("Main", function(Main) {
 });
 
 var dependencies = [
+  'modules/main/views/about',
   'modules/main/views/app',
   'modules/main/views/applist',
   'modules/main/views/body',

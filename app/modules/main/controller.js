@@ -19,10 +19,16 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
   App.vent.on('HomePage:Display', function() {
     App.content.show(Main.bodyView);
     Main.bodyView.right.show(Main.applistView);
+    Backbone.history.navigate('');
   });
 
-  App.vent.on('AboutPage:Display', function() {});
+  App.vent.on('AboutPage:Display', function() {
+    App.content.show(new Main.views.AboutView());
+    Backbone.history.navigate('about');
+  });
 
-  App.vent.on('ContactPage:Display', function() {});
+  App.vent.on('ContactPage:Display', function() {
+    Backbone.history.navigate('contact');
+  });
 
 });
