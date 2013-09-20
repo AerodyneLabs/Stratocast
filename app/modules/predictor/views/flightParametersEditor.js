@@ -9,6 +9,11 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       'click #prev': 'prev'
     },
 
+    onShow: function() {
+      // Populate form with current data
+      Backbone.Syphon.deserialize(this, Mod.currentPrediction.attributes);
+    },
+
     next: function() {
       // Serialize the form
       var data = Backbone.Syphon.serialize(this);
