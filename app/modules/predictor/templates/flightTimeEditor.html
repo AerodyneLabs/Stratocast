@@ -1,13 +1,24 @@
 <fieldset>
 	<legend>Launch Date &amp; Time</legend>
-	<p>Enter your launch time below.</p>
+	<p>Enter your launch date and time below.</p>
 	<div class="form-group">
-		<label for="time">Launch Time</label>
+		<label for="date">Launch Date (UTC)</label>
 		<div class="input-group">
-			<input id="time" type="text" class="form-control" autofocus placeholder="12:00 PM">
+			<input id="date" type="text" class="form-control" autofocus placeholder="MM/DD/YYYY">
 			<span class="input-group-btn">
-				<button id="button" class="btn btn-default" type="button">
-					<i id="icon" class="icon-time"></i>
+				<button id="date-button" class="btn btn-default" type="button">
+					<i id="date-icon" class="icon-calendar"></i>
+				</button>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="time">Launch Time (UTC)</label>
+		<div class="input-group">
+			<input id="time" type="text" class="form-control" autofocus placeholder="HH:MM">
+			<span class="input-group-btn">
+				<button id="time-button" class="btn btn-default" type="button">
+					<i id="time-icon" class="icon-time"></i>
 				</button>
 			</span>
 		</div>
