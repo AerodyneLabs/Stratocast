@@ -24,6 +24,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       if(data.size) Mod.currentPrediction.set({'size':data.size});
       if(data.mass) Mod.currentPrediction.set({'mass':data.mass});
       if(data.lift) Mod.currentPrediction.set({'lift':data.lift});
+      if(data.drag) Mod.currentPrediction.set({'drag':data.drag});
+      if(data.area) Mod.currentPrediction.set({'area':data.area});
       // Save the model
       Mod.currentPrediction.save();
 
