@@ -24,7 +24,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         Backbone.history.navigate('pred/forward/3');
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
-        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor());
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor({type:'forward'}));
         //Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
         break;
       default:
@@ -54,7 +54,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         Backbone.history.navigate('pred/quick/2');
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
-        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor());
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor({type:'quick'}));
         //Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
         break;
       default:
@@ -69,9 +69,21 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
   App.vent.on('ReversePrediction:Display', function(step) {
     switch (step) {
+      case 2:
+        Backbone.history.navigate('pred/reverse/2');
+        App.content.show(Mod.wizardLayout);
+        Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightParametersEditor({type:'reverse'}));
+        break;
+      case 3:
+        Backbone.history.navigate('pred/reverse/3');
+        App.content.show(Mod.wizardLayout);
+        Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor({type:'reverse'}));
+        //Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
+        break;
       default:
         // Display page
-        alert("Sorry, reverse predictions will be enabled soon!");
         Backbone.history.navigate('pred/reverse/1');
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);

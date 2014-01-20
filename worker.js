@@ -103,6 +103,7 @@ app.get('/api/prediction', function(req, res) {
   params.balloon = req.query.balloon;
   params.parachute = req.query.parachute;
   params.mass = parseFloat(req.query.mass);
+  params.direction = req.query.direction;
 
   var prediction = new Predictor(params);
   prediction.run({tStep: 5}, function(err, result) {

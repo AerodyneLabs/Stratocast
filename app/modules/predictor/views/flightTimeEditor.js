@@ -47,6 +47,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       queryString += "&parachute[area]=" + params.area;
       queryString += "&parachute[drag]=" + params.drag;
       queryString += "&mass=" + params.mass;
+      queryString += "&direction=" + this.type;
 
       // Run the prediction
       $.ajax("/api/prediction?" + queryString, {
@@ -74,6 +75,14 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     predictionComplete: function(jqXHR, status) {
       console.log("Prediction complete: " + status);
+    },
+
+    initialize: function(options) {
+      if(options) {
+        this.type = options.type || 'forward';
+      } else {
+        this.type = 'forward';
+      }
     }
   });
 

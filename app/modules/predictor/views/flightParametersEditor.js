@@ -28,11 +28,23 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       Mod.currentPrediction.save();
 
       // Go to the next step
-      App.vent.trigger('ForwardPrediction:Display', 3);
+      if(this.type === 'reverse') {
+        App.vent.trigger('ReversePrediction:Display', 3);
+      } else {
+        App.vent.trigger('ForwardPrediction:Display', 3);
+      }
     },
 
     prev: function() {
       App.vent.trigger('ForwardPrediction:Display', 1);
+    },
+
+    initialize: function(options) {
+      if(options) {
+        this.type = options.type || 'forward';
+      } else {
+        this.type = 'forward';
+      }
     }
   });
 
