@@ -32,19 +32,47 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         if(data.time) {
           var timeString = data.date + " " + data.time;
           var timestamp = Date.parse(timeString);
-          console.log(timeString + " - " + timestamp);
           if(isNaN(timestamp) === false) Mod.currentPrediction.set({'time': timestamp});
         }
       }
       // Save the model
       Mod.currentPrediction.save();
       
-      // Go to the next step
-      App.vent.trigger('ForwardPrediction:Display', 4);
+      // Generate the query string
+      var params = Mod.currentPrediction.attributes;
+      var queryString = "loc=" + params.latitude + "," + params.longitude;
+      if(params.time) queryString += "&time=" + params.time;
+      queryString += "&balloon[type]=" + params.brand + " " + params.size;
+      queryString += "&balloon[totalLift]=" + (parseFloat(params.mass) + parseFloat(params.lift));
+      queryString += "&parachute[area]=" + params.area;
+      queryString += "&parachute[drag]=" + params.drag;
+      queryString += "&mass=" + params.mass;
+
+      // Run the prediction
+      $.ajax("/api/prediction?" + queryString, {
+        success: this.predictionSuccess,
+        error: this.predictionError,
+        complete: this.predictionComplete
+      });
+      
     },
 
     prev: function() {
       App.vent.trigger('ForwardPrediction:Display', 2);
+    },
+
+    predictionSuccess: function(data, status, jqXHR) {
+      console.log("Prediction results: " + status);
+      console.log(data);
+    },
+
+    predictionError: function(jqXHR, status, error) {
+      console.log("Prediction Error: " + status);
+      console.error(error);
+    },
+
+    predictionComplete: function(jqXHR, status) {
+      console.log("Prediction complete: " + status);
     }
   });
 

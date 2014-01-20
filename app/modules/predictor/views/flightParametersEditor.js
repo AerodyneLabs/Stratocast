@@ -16,9 +16,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     next: function() {
       // Serialize the form
-      console.log(this);
       var data = Backbone.Syphon.serialize(this);
-      console.log(data);
       // Store the data in the current model
       if(data.brand) Mod.currentPrediction.set({'brand':data.brand});
       if(data.size) Mod.currentPrediction.set({'size':data.size});
