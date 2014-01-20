@@ -64,6 +64,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     predictionSuccess: function(data, status, jqXHR) {
       console.log("Prediction results: " + status);
       console.log(data);
+      App.vent.trigger('Prediction:Display', Mod.currentPrediction.attributes, data);
     },
 
     predictionError: function(jqXHR, status, error) {

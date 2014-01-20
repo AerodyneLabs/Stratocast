@@ -72,6 +72,13 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			$(window).off('resize', this.resize);
 			this.map.off('click', this.onClick);
 			App.vent.off('Map:Center', this.centerMap);
+		},
+
+		addJson: function(data) {
+			var json = L.geoJson(data);
+			console.log(json.getBounds());
+			this.map.fitBounds(json.getBounds());
+			json.addTo(this.map);
 		}
 	});
 

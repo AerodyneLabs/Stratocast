@@ -34,7 +34,7 @@ require.config({
       'lib/handlebars'
     ],
     leaflet: [
-      '//cdn.leafletjs.com/leaflet-0.6.4/leaflet',
+      '//cdn.leafletjs.com/leaflet-0.7.2/leaflet',
       'lib/leaflet'
     ],
     d3: [
