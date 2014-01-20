@@ -25,14 +25,44 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
         Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor());
-        Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
+        //Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
         break;
       default:
         // Step One
         Backbone.history.navigate('pred/forward/1');
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
-        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor());
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor({type:'forward'}));
+        Mod.leftSidebarLayout.main.show(new Mod.views.MapView());
+    }
+  });
+
+  App.vent.on('QuickPrediction:Display', function(step) {
+    switch (step) {
+      case 2:
+        // Set model parameters
+        Mod.currentPrediction.set({
+          'brand': 'Kaymont',
+          'size': '800g',
+          'mass': '1.5',
+          'lift': '2',
+          'drag': 1.5,
+          'area': 0.6
+        });
+        Mod.currentPrediction.save();
+        
+        Backbone.history.navigate('pred/quick/2');
+        App.content.show(Mod.wizardLayout);
+        Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightTimeEditor());
+        //Mod.leftSidebarLayout.main.show(new Mod.views.FlightCalendarEditor());
+        break;
+      default:
+        // Step 1
+        Backbone.history.navigate('pred/quick/1');
+        App.content.show(Mod.wizardLayout);
+        Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor({type:'quick'}));
         Mod.leftSidebarLayout.main.show(new Mod.views.MapView());
     }
   });
@@ -40,8 +70,13 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
   App.vent.on('ReversePrediction:Display', function(step) {
     switch (step) {
       default:
-      // Display page
-      Backbone.history.navigate('pred/reverse/1');
+        // Display page
+        alert("Sorry, reverse predictions will be enabled soon!");
+        Backbone.history.navigate('pred/reverse/1');
+        App.content.show(Mod.wizardLayout);
+        Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
+        Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor({type:'reverse'}));
+        Mod.leftSidebarLayout.main.show(new Mod.views.MapView());
     }
   });
 
@@ -53,6 +88,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     var map = new Mod.views.MapView();
     Mod.leftSidebarLayout.main.show(map);
     map.addJson(result);
+  });
+
+  App.vent.on('HistoricalPrediction:Display', function() {
+    alert("Sorry, historical prediction will be implemented soon!");
   });
 
 });

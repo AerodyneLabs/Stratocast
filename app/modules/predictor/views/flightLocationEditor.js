@@ -18,7 +18,13 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      * Go to the next step of the application
      */
     next: function() {
-      App.vent.trigger('ForwardPrediction:Display', 2);
+      if(this.type === 'quick') {
+        App.vent.trigger('QuickPrediction:Display', 2);
+      } else if(this.type === 'reverse') {
+        App.vent.trigger('ReversePrediction:Display', 2);
+      } else {
+        App.vent.trigger('ForwardPrediction:Display', 2);
+      }
     },
 
     /**
@@ -143,8 +149,21 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       Mod.currentPrediction.save();
     },
 
-    initialize: function() {
+    serializeData: function() {
+      if(this.type === 'reverse') {
+        return {'site': 'landing'};
+      } else {
+        return {'site': 'launch'};
+      }
+    },
+
+    initialize: function(options) {
       _.bindAll(this, 'setLatLon', 'geocodeHandler', 'geocodeComplete', 'geocodeError');
+      if(options) {
+        this.type = options.type || 'forward';
+      } else {
+        this.type = 'forward';
+      }
     }
   });
 
