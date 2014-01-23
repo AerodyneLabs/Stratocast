@@ -106,7 +106,9 @@ app.get('/api/prediction', function(req, res) {
   params.direction = req.query.direction;
 
   var prediction = new Predictor(params);
-  prediction.run({tStep: 5}, function(err, result) {
+  var tStep = 10;
+  if(params.direction === 'quick') tStep = 60;
+  prediction.run({tStep: 10}, function(err, result) {
     if(err) {
       res.send(500, err);
     } else {
