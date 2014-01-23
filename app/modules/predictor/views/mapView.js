@@ -76,7 +76,6 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
 		addJson: function(data) {
 			var json = L.geoJson(data);
-			console.log(json.getBounds());
 			this.map.fitBounds(json.getBounds());
 			json.addTo(this.map);
 		}
