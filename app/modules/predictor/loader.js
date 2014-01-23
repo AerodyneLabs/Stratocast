@@ -10,6 +10,7 @@ App.module("Predictor", function(Mod) {
 var dependencies = [
   'modules/predictor/models/predictionModel',
   'modules/predictor/views/mapView',
+  'modules/predictor/views/predictionResultsView',
   'modules/predictor/views/calendarDayView',
   'modules/predictor/views/flightLocationEditor',
   'modules/predictor/views/flightParametersEditor',

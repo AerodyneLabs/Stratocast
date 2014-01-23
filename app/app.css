@@ -57,3 +57,17 @@
 	height: 100px;
 	min-height: 100px;
 }
+
+table.table-vertical-row-header tr>th {
+	text-align: center;
+	vertical-align: middle;
+	width: 1em;
+}
+.table-vertical-row-header tr>th>div {
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+
+}

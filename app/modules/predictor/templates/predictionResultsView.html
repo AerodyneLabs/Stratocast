@@ -1,0 +1,54 @@
+<h3>Prediction Results</h3>
+<table class="table table-bordered table-vertical-row-header">
+	<tr>
+		<th>
+			<div>Overview</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Elapsed Time</dt><dd>{{elapsedTime}}</dd>
+				<dt>Total Distance</dt><dd>{{convertDistance totalDistance}}</dd>
+				<dt>Bearing</dt><dd>{{bearing}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="success">
+		<th>
+			<div>Launch</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{launchTime}}</dd>
+				<dt>Location</dt><dd>{{launchPosition}}<br /><small>{{launchLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance launchAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="warning">
+		<th>
+			<div>Burst</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{burstTime}}</dd>
+				<dt>Location</dt><dd>{{burstPosition}}<br /><small>{{burstLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance burstAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="danger">
+		<th>
+			<div>Landing</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{landingTime}}</dd>
+				<dt>Location</dt><dd>{{landingPosition}}<br /><small>{{landingLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance landingAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+</table>
