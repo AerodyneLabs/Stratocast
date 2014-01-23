@@ -8,6 +8,14 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     reversePrediction: function(step) {
       App.vent.trigger('ReversePrediction:Display', step);
+    },
+
+    quickPrediction: function(step) {
+      App.vent.trigger('QuickPrediction:Display', step);
+    },
+
+    predictionResults: function() {
+      App.vent.trigger('Prediction:Display');
     }
 
   });
@@ -96,7 +104,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     Backbone.history.navigate('pred/results');
     App.content.show(Mod.wizardLayout);
     Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
-    //Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightLocationEditor());
+    Mod.leftSidebarLayout.sidebar.show(new Mod.views.PredictionResultsView());
     var map = new Mod.views.MapView();
     Mod.leftSidebarLayout.main.show(map);
     map.addJson(result);
