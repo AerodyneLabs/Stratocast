@@ -28,3 +28,32 @@
 		<button id="next" type="button" class="btn btn-primary">Run</button>
 	</div>
 </fieldset>
+
+<div class="modal fade" id="runningModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times</button>
+				<h4 class="modal-title">Prediction Running</h4>
+			</div>
+			<div class="modal-body">
+				<p>The prediction is now running. This dialog will disappear when the prediction is complete.</p>
+				<p>This may take up to a minute depending on server load.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times</button>
+				<h4 class="modal-title">Prediction Running</h4>
+			</div>
+			<div class="modal-body">
+				<p>There was an error running your prediction, please try again. Contact the site administrator if this happens again.</p>
+			</div>
+		</div>
+	</div>
+</div>

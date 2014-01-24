@@ -8,6 +8,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       'click #next': 'next',
       'click #prev': 'prev'
     },
+    ui: {
+      runningModal: '#runningModal',
+      errorModal: '#errorModal'
+    },
 
     onShow: function() {
       // Populate form with current data
@@ -50,11 +54,11 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       queryString += "&direction=" + this.type;
 
       // Run the prediction
+      this.showRunningDialog(true);
       $.ajax("/api/prediction?" + queryString, {
         dataType: 'json',
         success: this.predictionSuccess,
-        error: this.predictionError,
-        complete: this.predictionComplete
+        error: this.predictionError
       });
       
     },
@@ -66,19 +70,47 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     predictionSuccess: function(data, status, jqXHR) {
       console.log("Prediction results: " + status);
       window.results = data;
-      App.vent.trigger('Prediction:Display', Mod.currentPrediction.attributes, data);
+      this.showRunningDialog(false, function() {
+        App.vent.trigger('Prediction:Display', Mod.currentPrediction.attributes, data);
+      });
     },
 
     predictionError: function(jqXHR, status, error) {
       console.log("Prediction Error: " + status);
       console.error(error);
+      this.showRunningDialog(false, function() {
+        this.showErrorDialog(true);
+      });
     },
 
-    predictionComplete: function(jqXHR, status) {
-      console.log("Prediction complete: " + status);
+    showRunningDialog: function(show, next) {
+      if(show) {
+        this.ui.runningModal.modal('show');
+      } else {
+        this.ui.runningModal.modal('hide');
+        if(next) {
+          this.ui.runningModal.on('hidden.bs.modal', function() {
+            next();
+          });
+        }
+      }
+    },
+
+    showErrorDialog: function(show, next) {
+      if(show) {
+        this.ui.errorModal.modal('show');
+      } else {
+        this.ui.errorModal.modal('hide');
+        if(next) {
+          this.ui.errorModal.on('hidden.bs.modal', function() {
+            next();
+          });
+        }
+      }
     },
 
     initialize: function(options) {
+      _.bindAll(this, 'predictionError', 'predictionSuccess');
       if(options) {
         this.type = options.type || 'forward';
       } else {
