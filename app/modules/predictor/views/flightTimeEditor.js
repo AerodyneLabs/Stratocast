@@ -51,6 +51,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
       // Run the prediction
       $.ajax("/api/prediction?" + queryString, {
+        dataType: 'json',
         success: this.predictionSuccess,
         error: this.predictionError,
         complete: this.predictionComplete
@@ -64,7 +65,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     predictionSuccess: function(data, status, jqXHR) {
       console.log("Prediction results: " + status);
-      console.log(data);
+      window.results = data;
       App.vent.trigger('Prediction:Display', Mod.currentPrediction.attributes, data);
     },
 
