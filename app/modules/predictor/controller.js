@@ -104,7 +104,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     Backbone.history.navigate('pred/results');
     App.content.show(Mod.wizardLayout);
     Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
-    Mod.leftSidebarLayout.sidebar.show(new Mod.views.PredictionResultsView());
+    var model = new Mod.PredictionModel(result);
+    Mod.leftSidebarLayout.sidebar.show(new Mod.views.PredictionResultsView({model: model}));
     var map = new Mod.views.MapView();
     Mod.leftSidebarLayout.main.show(map);
     map.addJson(result);

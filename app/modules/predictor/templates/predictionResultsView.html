@@ -6,7 +6,7 @@
 		</th>
 		<td>
 			<dl class="dl-horizontal">
-				<dt>Elapsed Time</dt><dd>{{elapsedTime}}</dd>
+				<dt>Elapsed Time</dt><dd>{{relativeTime elapsedTime}}</dd>
 				<dt>Total Distance</dt><dd>{{convertDistance totalDistance}}</dd>
 				<dt>Bearing</dt><dd>{{bearing}}</dd>
 			</dl>
@@ -19,8 +19,9 @@
 		</th>
 		<td>
 			<dl class="dl-horizontal">
-				<dt>Time</dt><dd>{{launchTime}}</dd>
-				<dt>Location</dt><dd>{{launchPosition}}<br /><small>{{launchLocation}}</small></dd>
+				<dt>Time</dt><dd>{{absoluteTime launchTime}}</dd>
+				<dt>Ascent Time</dt><dd>{{relativeTime ascentTime}}</dd>
+				<dt>Location</dt><dd>{{position launchPosition}}<br /><small>{{launchLocation}}</small></dd>
 				<dt>Altitude</dt><dd>{{convertDistance launchAltitude}}</dd>
 			</dl>
 		</td>
@@ -32,8 +33,8 @@
 		</th>
 		<td>
 			<dl class="dl-horizontal">
-				<dt>Time</dt><dd>{{burstTime}}</dd>
-				<dt>Location</dt><dd>{{burstPosition}}<br /><small>{{burstLocation}}</small></dd>
+				<dt>Time</dt><dd>{{absoluteTime burstTime}}</dd>
+				<dt>Location</dt><dd>{{position burstPosition}}<br /><small>{{burstLocation}}</small></dd>
 				<dt>Altitude</dt><dd>{{convertDistance burstAltitude}}</dd>
 			</dl>
 		</td>
@@ -45,8 +46,9 @@
 		</th>
 		<td>
 			<dl class="dl-horizontal">
-				<dt>Time</dt><dd>{{landingTime}}</dd>
-				<dt>Location</dt><dd>{{landingPosition}}<br /><small>{{landingLocation}}</small></dd>
+				<dt>Time</dt><dd>{{absoluteTime landingTime}}</dd>
+				<dt>Descent Time</dt><dd>{{relativeTime descentTime}}</dd>
+				<dt>Location</dt><dd>{{position landingPosition}}<br /><small>{{landingLocation}}</small></dd>
 				<dt>Altitude</dt><dd>{{convertDistance landingAltitude}}</dd>
 			</dl>
 		</td>
