@@ -6,7 +6,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     tagName: 'form',
     events: {
       'click #next': 'next',
-      'click #prev': 'prev'
+      'click #prev': 'prev',
+      'change': 'change'
     },
 
     onShow: function() {
@@ -14,7 +15,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       Backbone.Syphon.deserialize(this, Mod.currentPrediction.attributes);
     },
 
-    next: function() {
+    change: function() {
       // Serialize the form
       var data = Backbone.Syphon.serialize(this);
       // Store the data in the current model
@@ -26,7 +27,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       if(data.area) Mod.currentPrediction.set({'area':data.area});
       // Save the model
       Mod.currentPrediction.save();
+    },
 
+    next: function() {
       // Go to the next step
       if(this.type === 'reverse') {
         App.vent.trigger('ReversePrediction:Display', 3);

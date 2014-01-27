@@ -3,6 +3,7 @@ App.module("Main", function(Mod, App) {
 	App.helpers = {
 		convertDistance: function(data) {
 			var value = data || 0.0;
+			value = parseFloat(value);
 			var unit = 'm';
 			if (App.unitSystem === 'english') {
 
@@ -23,6 +24,7 @@ App.module("Main", function(Mod, App) {
 
 		convertMass: function(data) {
 			var value = data || 0.0;
+			value = parseFloat(value);
 			var unit = 'kg';
 			if (App.unitSystem === 'english') {
 
@@ -42,6 +44,7 @@ App.module("Main", function(Mod, App) {
 
 		convertSpeed: function(data) {
 			var value = data || 0.0;
+			value = parseFloat(value);
 			var unit = 'm/s';
 
 			if (App.unitSystem === 'english') {
