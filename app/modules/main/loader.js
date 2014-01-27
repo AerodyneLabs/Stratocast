@@ -14,6 +14,7 @@ var dependencies = [
   'modules/main/views/body',
   'modules/main/controller',
   'modules/main/router',
+  'modules/main/helpers',
   'modules/main/main'
 ];
 
