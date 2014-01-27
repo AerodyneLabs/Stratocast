@@ -13,6 +13,11 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     // Create layouts
     Mod.wizardLayout = new Mod.views.WizardLayout();
     Mod.leftSidebarLayout = new Mod.views.LeftSidebarLayout();
+
+    // Get data from the server
+    $.getJSON('/api/balloons').done(function(data) {
+      Mod.balloons = data;
+    });
   };
 
 });
