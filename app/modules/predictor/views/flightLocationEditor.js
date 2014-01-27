@@ -57,7 +57,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       var options = '&thumbMaps=false';
 
       // Spin the icon for status indication
-      this.ui.icon.addClass('icon-spin');
+      this.ui.icon.addClass('fa-spin');
 
       // Perform the query with ajax
       $.ajax(url + encodeURIComponent(query) + options, {
@@ -100,7 +100,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
      */
     geocodeComplete: function(jqXHR, status) {
       // Stop the spin animation
-      this.ui.icon.removeClass('icon-spin');
+      this.ui.icon.removeClass('fa-spin');
     },
 
     /**

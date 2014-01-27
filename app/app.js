@@ -2,7 +2,7 @@
 require.config({
   paths: {
     underscore: [
-      '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min',
+      '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min',
       'lib/underscore'
     ],
     jquery: [
@@ -10,11 +10,12 @@ require.config({
       'lib/jquery-1.9.1'
     ],
     bootstrap: [
-      '//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min',
+      '//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min',
       'lib/boostrap'
     ],
     backbone: [
-      '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min',
+      //'//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone',
       'lib/backbone'
     ],
     syphon: [
@@ -26,11 +27,11 @@ require.config({
       'lib/backbone.localStorage-min'
     ],
     marionette: [
-      '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.4-bundled/backbone.marionette.min',
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.min',
       'lib/backbone.marionette'
     ],
     handlebars: [
-      '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min',
+      '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min',
       'lib/handlebars'
     ],
     leaflet: [
@@ -38,7 +39,7 @@ require.config({
       'lib/leaflet'
     ],
     d3: [
-      '//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min',
+      '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.0/d3.v3.min',
       'lib/d3.min'
     ],
     modulehelper: 'modules/modulehelper'
@@ -87,23 +88,23 @@ require(['marionette', 'bootstrap', 'syphon', 'localStorage', 'handlebars', 'lea
     applications: [{
       title: 'Forward Prediction',
       description: 'Run a detailed prediction to find the landing site.',
-      icon: 'icon-play',
+      icon: 'fa fa-play',
       event: 'ForwardPrediction:Display'
     }, {
       title: 'Reverse Prediction',
       description: 'Run a detailed prediction to find the launch site .',
-      icon: 'icon-play',
-      iconClass: 'icon-flip-horizontal',
+      icon: 'fa fa-play',
+      iconClass: 'fa-flip-horizontal',
       event: 'ReversePrediction:Display'
     }, {
       title: 'Quick Prediction',
       description: 'Run a simple prediction.',
-      icon: 'icon-fast-forward',
+      icon: 'fa fa-fast-forward',
       event: 'QuickPrediction:Display'
     }, {
       title: 'Historical Prediction',
       description: 'Run a prediction for a date in the past.',
-      icon: 'icon-time',
+      icon: 'fa fa-clock-o',
       event: 'HistoricalPrediction:Display'
     }]
   };
