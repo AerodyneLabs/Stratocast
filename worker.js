@@ -5,6 +5,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var ds = require('./lib/data-store');
 var Predictor = require('./lib/predictor');
+var Balloon = require('./lib/predictor/balloon');
 
 var currentDownload = null;
 setInterval(function() {
@@ -115,6 +116,10 @@ app.get('/api/prediction', function(req, res) {
       res.send(200, result);
     }
   });
+});
+
+app.get('/api/balloons', function(req, res) {
+  res.send(200, Balloon.getTypes());
 });
 
 // Bind to a port
