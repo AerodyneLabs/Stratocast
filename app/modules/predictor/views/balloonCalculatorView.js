@@ -21,6 +21,15 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			return burstAltitude;
 		},
 
+		estGasVolume: function() {
+			var balloon = Mod.balloons[this.model.get('brand') + ' ' + this.model.get('size')];
+			var lift = parseFloat(this.model.get('lift'));
+			var payload = parseFloat(this.model.get('mass'));
+			var launchVolume = (lift + balloon.mass + payload) / (1.275 - 0.1785);
+
+			return Math.round(launchVolume * 1000);
+		},
+
 		estAscentRate: function() {
 			var balloon = Mod.balloons[this.model.get('brand') + ' ' + this.model.get('size')];
 			var lift = parseFloat(this.model.get('lift'));
@@ -35,7 +44,6 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
 		estAscentTime: function() {
 			var seconds = this.estBurstAltitude() / this.estAscentRate();
-			console.log(seconds);
 			var time = new Date(seconds * 1000);
 
 			return time;
@@ -45,11 +53,13 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			var alt = this.estBurstAltitude();
 			var ar = this.estAscentRate();
 			var time = this.estAscentTime();
+			var volume = this.estGasVolume();
 
 			return {
 				estAscentRate: ar,
 				estBurstAltitude: alt,
-				estAscentTime: time
+				estAscentTime: time,
+				estGasVolume: volume
 			};
 		},
 

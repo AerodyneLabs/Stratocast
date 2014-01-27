@@ -6,7 +6,13 @@ App.module("Main", function(Mod, App) {
 			value = parseFloat(value);
 			var unit = 'm';
 			if (App.unitSystem === 'english') {
+				value *= 3.28;
+				unit = 'ft';
 
+				if(Math.abs(value) >= 132000) {
+					value = value / 5280;
+					unit = 'mi';
+				}
 			} else {
 				// Convert unit system
 				// default is already in metric
@@ -27,16 +33,17 @@ App.module("Main", function(Mod, App) {
 			value = parseFloat(value);
 			var unit = 'kg';
 			if (App.unitSystem === 'english') {
-
+				value *= 2.205;
+				unit = 'lbs';
 			} else {
 				// Convert unit system
 				// default is already in metric
 
 				// Idealize order of magnitude
-				if (value <= 1) {
+				/*if (value <= 1) {
 					value = value * 1000;
 					unit = 'g';
-				}
+				}*/
 			}
 
 			return value + ' ' + unit;
@@ -49,7 +56,7 @@ App.module("Main", function(Mod, App) {
 
 			if (App.unitSystem === 'english') {
 				unit = "fpm";
-				value /= 196.9;
+				value *= 196.9;
 				value = Math.round(value);
 			} else {
 				// default is already in metric
@@ -57,6 +64,14 @@ App.module("Main", function(Mod, App) {
 			}
 
 			return value + ' ' + unit;
+		},
+
+		unitMass: function() {
+			if(App.unitSystem === 'english') {
+				return 'lbs';
+			} else {
+				return 'kg';
+			}
 		},
 
 		absoluteTime: function(data) {

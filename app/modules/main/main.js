@@ -19,7 +19,7 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
       collection: this.appCollection
     });
 
-    App.unitSystem = options.unitSystem || 'metric';
+    //App.unitSystem = options.unitSystem || 'metric';
 
     Backbone.history.start();
   };

@@ -4,6 +4,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     template: 'flightParametersEditor',
     model: Mod.FlightModel,
     tagName: 'form',
+    templateHelpers: function() {
+      return App.helpers;
+    },
     events: {
       'click #next': 'next',
       'click #prev': 'prev',
@@ -12,12 +15,21 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     onShow: function() {
       // Populate form with current data
-      Backbone.Syphon.deserialize(this, Mod.currentPrediction.attributes);
+      var temp = _.clone(Mod.currentPrediction.attributes);
+      if(App.unitSystem === 'english') {
+        temp.mass = parseFloat(temp.mass) * 2.20462;
+        temp.lift = parseFloat(temp.lift) * 2.20462;
+      }
+      Backbone.Syphon.deserialize(this, temp);
     },
 
     change: function() {
       // Serialize the form
       var data = Backbone.Syphon.serialize(this);
+      if(App.unitSystem === 'english') {
+        data.mass = parseFloat(data.mass) * 0.453592;
+        data.lift = parseFloat(data.lift) * 0.453592;
+      }
       // Store the data in the current model
       if(data.brand) Mod.currentPrediction.set({'brand':data.brand});
       if(data.size) Mod.currentPrediction.set({'size':data.size});
