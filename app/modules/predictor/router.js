@@ -6,7 +6,8 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       'pred/forward(/:step)': 'forwardPrediction',
       'pred/reverse(/:step)': 'reversePrediction',
       'pred/quick(/:step)': 'quickPrediction',
-      'pred/results': 'predictionResults'
+      'pred/results': 'predictionResults',
+      'pred/calculator': 'balloonCalculator'
     }
 
   });

@@ -16,6 +16,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     predictionResults: function() {
       App.vent.trigger('Prediction:Display');
+    },
+
+    balloonCalculator: function() {
+      App.vent.trigger('BalloonCalculator:Display');
     }
 
   });
