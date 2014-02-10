@@ -85,6 +85,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
         App.content.show(Mod.wizardLayout);
         Mod.wizardLayout.body.show(Mod.leftSidebarLayout);
         Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightParametersEditor({type:'reverse'}));
+        Mod.leftSidebarLayout.main.show(new Mod.views.BalloonCalculatorView({
+          model: Mod.currentPrediction
+        }));
         break;
       case 3:
         Backbone.history.navigate('pred/reverse/3');
