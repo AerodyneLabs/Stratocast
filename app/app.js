@@ -92,7 +92,7 @@ require(['marionette', 'bootstrap', 'syphon', 'localStorage', 'handlebars', 'lea
       event: 'ForwardPrediction:Display'
     }, {
       title: 'Reverse Prediction',
-      description: 'Run a detailed prediction to find the launch site .',
+      description: 'Run a detailed prediction to find the launch site.',
       icon: 'fa fa-play',
       iconClass: 'fa-flip-horizontal',
       event: 'ReversePrediction:Display'
@@ -102,11 +102,16 @@ require(['marionette', 'bootstrap', 'syphon', 'localStorage', 'handlebars', 'lea
       icon: 'fa fa-fast-forward',
       event: 'QuickPrediction:Display'
     }, {
+      title: 'Balloon Calculator',
+      description: 'Compare different ascent rates and burst altitudes.',
+      icon: 'fa fa-wrench',
+      event: 'BalloonCalculator:Display'
+    }] /*{
       title: 'Historical Prediction',
       description: 'Run a prediction for a date in the past.',
       icon: 'fa fa-clock-o',
       event: 'HistoricalPrediction:Display'
-    }]
+    }]*/
   };
 
   // Use handlebars instead of underscore templates
