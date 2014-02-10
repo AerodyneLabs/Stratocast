@@ -52,6 +52,15 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     }
   });
 
+  App.vent.on('BalloonCalculator:Display', function() {
+    Backbone.history.navigate('pred/calculator');
+    App.content.show(Mod.leftSidebarLayout);
+    Mod.leftSidebarLayout.sidebar.show(new Mod.views.FlightParametersEditor());
+    Mod.leftSidebarLayout.main.show(new Mod.views.BalloonCalculatorView({
+      model: Mod.currentPrediction
+    }));
+  });
+
   App.vent.on('QuickPrediction:Display', function(step) {
     switch (step) {
       case 2:
