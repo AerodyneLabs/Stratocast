@@ -19,7 +19,17 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
       collection: this.appCollection
     });
 
-    //App.unitSystem = options.unitSystem || 'metric';
+    App.unitSystem = options.unitSystem || 'metric';
+    if(App.unitSystem === 'metric') {
+      $('#metricLabel').button('toggle');
+    } else {
+      $('#englishLabel').button('toggle');
+    }
+    $('input:radio[name=unitSystem]').change(function() {
+      var system = $('input:radio[name=unitSystem]:checked').attr('id');
+      console.log("Switched to " + system);
+      App.vent.trigger('UnitSwitch', system);
+    });
 
     Backbone.history.start();
   };
