@@ -16,9 +16,12 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     onShow: function() {
       // Populate form with current data
       var temp = _.clone(Mod.currentPrediction.attributes);
+      console.log(App.unitSystem);
       if(App.unitSystem === 'english') {
+        console.log('english conversion');
         temp.mass = parseFloat(temp.mass) * 2.20462;
         temp.lift = parseFloat(temp.lift) * 2.20462;
+        temp.area = parseFloat(temp.area) * 10.7639;
       }
       Backbone.Syphon.deserialize(this, temp);
     },
@@ -29,6 +32,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       if(App.unitSystem === 'english') {
         data.mass = parseFloat(data.mass) * 0.453592;
         data.lift = parseFloat(data.lift) * 0.453592;
+        data.area = parseFloat(data.area) / 10.7639;
       }
       // Store the data in the current model
       if(data.brand) Mod.currentPrediction.set({'brand':data.brand});
