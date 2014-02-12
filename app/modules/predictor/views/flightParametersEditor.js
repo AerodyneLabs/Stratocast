@@ -16,9 +16,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
     onShow: function() {
       // Populate form with current data
       var temp = _.clone(Mod.currentPrediction.attributes);
-      console.log(App.unitSystem);
       if(App.unitSystem === 'english') {
-        console.log('english conversion');
         temp.mass = parseFloat(temp.mass) * 2.20462;
         temp.lift = parseFloat(temp.lift) * 2.20462;
         temp.area = parseFloat(temp.area) * 10.7639;
@@ -64,6 +62,10 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       } else {
         this.type = 'forward';
       }
+      this.listenTo(App.vent, 'UnitSwitch', function(system) {
+        this.render();
+        this.onShow();
+      });
     }
   });
 
