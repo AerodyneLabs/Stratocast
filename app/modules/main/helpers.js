@@ -74,6 +74,14 @@ App.module("Main", function(Mod, App) {
 			}
 		},
 
+		unitArea: function() {
+			if(App.unitSystem === 'english') {
+				return 'ft<sup>2</sup>';
+			} else {
+				return 'm<sup>2</sup>';
+			}
+		},
+
 		absoluteTime: function(data) {
 			var time = new Date(data);
 			var ret = (time.getMonth() + 1) + "/" + time.getDate() + "/" + time.getFullYear();
