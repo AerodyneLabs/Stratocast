@@ -11,6 +11,9 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
     initialize: function(options) {
       //_.bind(this.templateHelpers.convertDistance, this.unit);
+      this.listenTo(App.vent, 'UnitSwitch', function(system) {
+        this.render();
+      });
     }
   });
 
