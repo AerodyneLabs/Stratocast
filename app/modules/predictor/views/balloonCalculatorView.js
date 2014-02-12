@@ -67,7 +67,11 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 			this.render();
 		},
 
-		initialize: function(options) {}
+		initialize: function(options) {
+			this.listenTo(App.vent, 'UnitSwitch', function(system) {
+				this.render();
+			});
+		}
 	});
 
 });
