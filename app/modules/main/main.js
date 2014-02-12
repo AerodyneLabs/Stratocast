@@ -27,7 +27,7 @@ App.module("Main", function(Main, App, Backbone, Marionette, $, _) {
     }
     $('input:radio[name=unitSystem]').change(function() {
       var system = $('input:radio[name=unitSystem]:checked').attr('id');
-      console.log("Switched to " + system);
+      App.unitSystem = system;
       App.vent.trigger('UnitSwitch', system);
     });
 
