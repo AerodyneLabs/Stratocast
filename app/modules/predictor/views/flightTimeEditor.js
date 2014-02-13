@@ -47,7 +47,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
       var queryString = "loc=" + params.latitude + "," + params.longitude;
       if(params.time) queryString += "&time=" + params.time;
       queryString += "&balloon[type]=" + params.brand + " " + params.size;
-      queryString += "&balloon[totalLift]=" + (parseFloat(params.mass) + parseFloat(params.lift));
+      queryString += "&balloon[totalLift]=" + ((parseFloat(params.size) / 1000) + parseFloat(params.lift));
       queryString += "&parachute[area]=" + params.area;
       queryString += "&parachute[drag]=" + params.drag;
       queryString += "&mass=" + params.mass;
