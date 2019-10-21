@@ -91,6 +91,14 @@ Perform the installation
 $ sudo yum install mongodb-org
 ```
 
+### Install wgrib2
+This is needed to that we are able to process the data that is downloaded from the National Weather Service.
+
+```
+sudo yum install wgrib2
+```
+
+
 ## Start up
 
 ### Start Mongodb server
