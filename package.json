@@ -17,7 +17,7 @@
   "dependencies": {
     "express": "~3.2.0",
     "request": "~2.20.0",
-    "mongoose": "~3.6.9",
+    "mongoose": "~5.7.7",
     "sprintf": "~0.1.1",
     "handlebars": "~1.0.12",
     "redis": "~0.8.4",
