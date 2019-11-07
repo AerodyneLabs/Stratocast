@@ -126,6 +126,6 @@ app.get('/api/balloons', function(req, res) {
 app.listen(global.PORT);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1/windData');
+//mongoose.connect('mongodb://127.0.0.1/windData');
 
 console.log('Worker ' + cluster.worker.process.pid + ' running.');
