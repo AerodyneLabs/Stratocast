@@ -87,8 +87,8 @@ app.get('/api/prediction', function(req, res) {
   // Ensure start location
   var location = req.param('loc');
   location = location.split(',');
-  var lat = parseFloat(location[0] || 42.00542768820574);
-  var lng = parseFloat(location[1] || -94.08279418945312);
+  var lat = parseFloat(location[0]);
+  var lng = parseFloat(location[1]);
   params.loc = [lng, lat];
 
   // Ensure start time
