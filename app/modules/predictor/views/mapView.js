@@ -31,28 +31,28 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
                 maxZoom: 18,
                 subdomains: ['a','b','c']
             });
-            var satLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-                attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
-                maxZoom: 18,
-                subdomains: ['a','b','c']
-            });
-            var hybLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-                attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
-                maxZoom: 18,
-                subdomains: ['a','b','c']
-            });
-			var hybGroup = L.layerGroup([satLayer, hybLayer]);
-			var baseMaps = {
-				"Map": mapLayer,
-				"Hybrid": hybGroup
-			};
+            //var satLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            //    attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
+            //    maxZoom: 18,
+            //    subdomains: ['a','b','c']
+            //});
+            //var hybLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            //    attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
+            //    maxZoom: 18,
+            //    subdomains: ['a','b','c']
+            //});
+			//var hybGroup = L.layerGroup([satLayer, hybLayer]);
+			//var baseMaps = {
+			//	"Map": mapLayer,
+			//	"Hybrid": hybGroup
+			//};
 			this.resize();
 			this.map = L.map('map', {
 				layers: [mapLayer],
 				center: new L.LatLng(42, -94),
 				zoom: 10
 			});
-			L.control.layers(baseMaps).addTo(this.map);
+			//L.control.layers(baseMaps).addTo(this.map);
 
 			// Add scale
 			L.control.scale().addTo(this.map);
@@ -77,7 +77,7 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 		addJson: function(data) {
 			var json = L.geoJson(data);
 			this.map.fitBounds(json.getBounds());
-			json.addTo(this.map);
+			json.addTo(this.map).bringToFront();
 		}
 	});
 
