@@ -1,12 +1,16 @@
 {
   "name": "Stratocast",
   "description": "An online high altitude balloon prediction application",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "AeroDyne Labs <support@aerodynelabs.com>",
   "contributors": [
     {
       "name": "Ethan Harstad",
       "email": "ethanharstad@gmail.com"
+    },
+    {
+        "name": "Justin Hernandez",
+        "email": "justin_h1@hotmail.com"
     }
   ],
   "license": "BSD",
