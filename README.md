@@ -20,7 +20,9 @@ This software runs within the NodeJS framework.
 
 ## Release Notes
 
-### Version 1.0
+
+
+### Version 1.0.0
 
 - 10th Nov 2019.
 - Initial release that was successfully used as a Minimum Viable Product (MVP) running on Heroku.
@@ -32,6 +34,10 @@ This software runs within the NodeJS framework.
 - Build the wgrib2 application in the Heroku deployment pipeline and then use from the Stratocast application. 
 - Redis and MongoDB services on Heroku support the NOAA download queue and caching of sounding files, respectively.
 
+### Version 0.0.1
+
+- 11 May 2013
+- Initial working version.
 
 ## Dependencies
 
