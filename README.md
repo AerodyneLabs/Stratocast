@@ -18,6 +18,21 @@ This software includes four applications:
 
 This software runs within the NodeJS framework.
 
+## Release Notes
+
+### Version 1.0
+
+- 10th Nov 2019.
+- Initial release that was successfully used as a Minimum Viable Product (MVP) running on Heroku.
+- https://stratocast-mvp.herokuapp.com/
+- Successfully able to run a quick prediction for a balloon launch site in Fisher, Indiana.
+- Documented how to install on Laptop and also run on the cloud.
+- Open Street Maps used to serve up the map tiles.
+- Successfully downloads wgrib2 format files to 1 degree from NOAA.
+- Build the wgrib2 application in the Heroku deployment pipeline and then use from the Stratocast application. 
+- Redis and MongoDB services on Heroku support the NOAA download queue and caching of sounding files, respectively.
+
+
 ## Dependencies
 
 ### Node version
@@ -48,8 +63,95 @@ $ mongod --version
 db version v3.2.22
 ```
 
-## Installation
+## High-Level Design
 
+This document only captures the high-level design.
+
+### Control flow
+
+1. Write a list of time stamp keys to a Redis *sounding queue*.
+1. Each worker attempts to pop a key from the *sounding queue* and perform a download, if a download is not currently occurring.
+1. As each grib2 file is down loaded from NOAA, it is pre-processed by wgrib2 that performs a filtering of the original file.
+1. The smaller filtered grib2 file is kept and the original down-loaded file is deleted.
+1. The file path reference to the smaller grib2 file is written into a Mongo DB collection called *soundingFiles*.
+1. User asynchronously makes a *flight prediction request*.
+1. Attempt to get this sounding from the Mongo DB collection called *soundingCache*.
+1. If there is a cache *hit* then the value from the cache is used to for the flight prediction.
+1. If there is a cache *miss* then the path to the grib2 file is retrieved from the Mongo DB collection *soundingFiles*.
+1. wgrib2 is used to process the smaller filtered grib2 file to get the temperature, altitude, wind and pressure values.
+1. Extracted values are stored in the Mongo DB collection *soundingCache*.
+1. Extracted values are used to calculate the flight path.
+1. Results are presented back to the user on a Leaflet map that uses Open Street Map tiles.
+
+### Data flow
+
+1. Data store initialisation pushes time stamp keys to Redis *sounding queue*. 
+1. Worker pops time stamp keys from Redis *sounding queue*.
+1. Worker downloads grib2 data files from NOAA and converts them to a smaller filtered format.
+1. Users make a flight prediction request
+1. grib2 files have information extracted and stored into Mongo DB
+1. Flight path prediction is presented to the user on a Leaflet map.
+ 
+### Design Patterns
+
+1. Separation of concerns
+    - A design principle for separating a computer program into distinct sections, so that each section addresses a separate concern. A concern is a set of information that affects the code of a computer program. A concern can be as general as the details of the hardware the code is being optimised for, or as specific as the name of a class to instantiate. A program that embodies SoC well is called a modular program. Modularity, and hence separation of concerns, is achieved by encapsulating information inside a section of code that has a well-defined interface.
+1. Model View Controller
+    - An architectural pattern commonly used for developing user interfaces that divides an application into three interconnected parts. This is done to separate internal representations of information from the ways information is presented to and accepted from the user. The MVC design pattern decouples these major components allowing for code reuse and parallel development.
+    - Model
+        - The central component of the pattern. It is the application's dynamic data structure, independent of the user interface. It directly manages the data, logic and rules of the application.
+    - View
+        - Any representation of information such as a chart, diagram or table. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants.
+    - Controller
+        - Accepts input and converts it to commands for the model or view.
+
+## Heroku
+
+To get the Stratocast running as a Heroku application https://stratocast-mvp.herokuapp.com/ 
+
+
+### Add-On
+
+Add the following add-ons:
+
+1. Heroku Redis
+1. mLab MongoDB
+
+### Build Packs
+
+Add the following build packs:
+
+ 1. heroku-community/apt
+ 1. https://github.com/colonyamerican/heroku-buildpack-make.git
+ 1. heroku/nodejs
+ 
+### Redis Configuration
+
+The default Redis timeout is set to 5 minutes and this needs to be extended so that the Redis server does not timeout.
+
+```
+$ heroku redis:timeout --app stratocast-mvp  --seconds 0
+
+```
+
+### Configuration Variables
+
+When running on Heroku the hostname, port and authentication to interact with the Redis, MongoDb and the node service
+are configured by the following configuration variables.
+ 
+ 1. `MONGODB_URI`: Hostname, port and authentication to connect and use the Heroku Mongo DB service.
+ 1. `REDIS_URL`: Hostname, port and authentication to connect and use the Heroku Redis service.
+ 1. `PORT`: Port for the Heroku NodeJS web application.
+ 
+### Deployment
+
+When making a deployment of the Stratocast to the Heroku application https://stratocast-mvp.herokuapp.com/ from GitHub.
+
+Use the **deploy** branch.
+
+## Laptop Installation
+
+To get the Stratocast running as an application on your laptop.
 
 ### Install Node and Node Package Manager (NPM)
 
