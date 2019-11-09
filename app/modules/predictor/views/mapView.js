@@ -26,26 +26,12 @@ App.module("Predictor", function(Mod, App, Backbone, Marionette, $, _) {
 
 		onShow: function() {
 			// TODO Map attribution
-            var mapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-                attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
-                maxZoom: 18,
-                subdomains: ['a','b','c']
-            });
-            //var satLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-            //    attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
-            //    maxZoom: 18,
-            //    subdomains: ['a','b','c']
-            //});
-            //var hybLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-            //    attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
-            //    maxZoom: 18,
-            //    subdomains: ['a','b','c']
-            //});
-			//var hybGroup = L.layerGroup([satLayer, hybLayer]);
-			//var baseMaps = {
-			//	"Map": mapLayer,
-			//	"Hybrid": hybGroup
-			//};
+      var mapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+          attribution: 'Map data &copy; OpenStreetMap, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">',
+          maxZoom: 18,
+          subdomains: ['a','b','c']
+      });
+
 			this.resize();
 			this.map = L.map('map', {
 				layers: [mapLayer],
