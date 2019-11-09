@@ -21,7 +21,7 @@
     "mongoose": "~3.6.9",
     "sprintf": "~0.1.1",
     "handlebars": "~1.0.12",
-    "redis": "~0.8.4",
+    "redis": "^0.8.6",
     "async": "~0.2.9",
     "underscore": "~1.5.1",
     "mongoskin": "~0.6.0",

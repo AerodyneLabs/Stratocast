@@ -33,4 +33,4 @@ node_modules
 #
 public
 TODO
-data
+data/*

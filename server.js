@@ -1,4 +1,4 @@
-global.PORT = 8000;
+global.PORT = process.env.PORT || 8000;
 
 var cluster = require('cluster');
 
