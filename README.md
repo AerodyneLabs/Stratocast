@@ -27,6 +27,7 @@ This software runs within the NodeJS framework.
 - Added restful grib2 data, API and model documentation.
 - Invalid parachute values no longer cause an error.
 - Zero net lift no longer causes infinite loop.
+- Upgrade to the nodejs packages for requests, mongoose, handlebars and express.
 
 ### Version 1.0.0
 

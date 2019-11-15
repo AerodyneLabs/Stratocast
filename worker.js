@@ -40,18 +40,16 @@ updateSounding = function(error, key) {
 app = express();
 
 // Configure express
-app.configure(function() {
-  // Simple logger
-  // TODO Replace logger
-  app.use(function(req, res, next) {
-    console.log('%s: %s %s', cluster.worker.process.pid, req.method, req.url);
-    next();
-  });
-
-  // Static file server
-  // TODO Replace express.static with nginx
-  app.use(express.static(__dirname + '/app'));
+// Simple logger
+// TODO Replace logger
+app.use(function(req, res, next) {
+  console.log('%s: %s %s', cluster.worker.process.pid, req.method, req.url);
+  next();
 });
+
+// Static file server
+// TODO Replace express.static with nginx
+app.use(express.static(__dirname + '/app'));
 
 app.get('/api/sounding', function(req, res) {
   var timestring = req.param('time');
@@ -85,7 +83,7 @@ app.get('/api/prediction', function(req, res) {
   var params = {};
 
   // Ensure start location
-  var location = req.param('loc');
+  var location = req.query['loc'];
   location = location.split(',');
   var lat = parseFloat(location[0]);
   var lng = parseFloat(location[1]);
@@ -111,15 +109,15 @@ app.get('/api/prediction', function(req, res) {
   if(params.direction === 'quick') tStep = 60;
   prediction.run({tStep: tStep}, function(err, result) {
     if(err) {
-      res.send(500, err);
+      res.status(500).send(err);
     } else {
-      res.send(200, result);
+      res.status(200).send(result);
     }
   });
 });
 
 app.get('/api/balloons', function(req, res) {
-  res.send(200, Balloon.getTypes());
+  res.status(200).send(Balloon.getTypes());
 });
 
 // Bind to a port
