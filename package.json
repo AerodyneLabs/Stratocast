@@ -9,8 +9,8 @@
       "email": "ethanharstad@gmail.com"
     },
     {
-        "name": "Justin Hernandez",
-        "email": "justin_h1@hotmail.com"
+      "name": "Justin Hernandez",
+      "email": "justin_h1@hotmail.com"
     }
   ],
   "license": "BSD",
@@ -24,7 +24,7 @@
     "mongodb": "^2.2.36",
     "mongoose": "~3.6.9",
     "sprintf": "~0.1.1",
-    "handlebars": "~1.0.12",
+    "handlebars": "~4.5.1",
     "redis": "^0.8.6",
     "async": "~0.2.9",
     "underscore": "~1.5.1",
