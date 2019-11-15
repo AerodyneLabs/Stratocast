@@ -1,19 +1,22 @@
 #
-# Node
+# Node and wgrib2 build.
 #
 lib-cov
-*.seed
-*.log
+*.a
 *.csv
 *.dat
+*.gz
+*.la
+*.log
+*.o
 *.out
 *.pid
-*.gz
+*.seed
 
-pids
 logs
-results
+pids
 reports
+results
 
 npm-debug.log
 node_modules
@@ -22,11 +25,31 @@ node_modules
 # Sublime
 #
 *.sublime-workspace
+.project
 
 #
 # Redis
 #
 *.rdb
+
+
+#
+# Grib2
+#
+grib2/aux_progs
+grib2/bin
+grib2/gctpc
+grib2/include
+grib2/jasper-1.900.1
+grib2/jasper-1.900.1/
+grib2/lib/pkgconfig
+grib2/libaec-1.0.2
+grib2/libpng-1.2.57
+grib2/man
+grib2/netcdf-3.6.3
+grib2/share
+grib2/wgrib2
+grib2/zlib-1.2.11
 
 #
 # Project Specific
