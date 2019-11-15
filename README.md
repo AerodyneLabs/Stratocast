@@ -25,6 +25,7 @@ This software runs within the NodeJS framework.
 - Add date here
 - Burst altitude on prediction was incorrect due to incorrect API use, formulas and parsing of wgrib2 format.
 - Added restful grib2 data, API and model documentation.
+- Zero net lift no longer causes infinite loop.
 
 
 ### Version 1.0.0
