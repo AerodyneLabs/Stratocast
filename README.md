@@ -22,11 +22,11 @@ This software runs within the NodeJS framework.
 
 ### Version 2.0.0
 
-- Add date here
+- 17th Nov 2019.
 - Burst altitude on prediction was incorrect due to incorrect API use, formulas and parsing of wgrib2 format.
 - Added restful grib2 data, API and model documentation.
+- Invalid parachute values no longer cause an error.
 - Zero net lift no longer causes infinite loop.
-
 
 ### Version 1.0.0
 
