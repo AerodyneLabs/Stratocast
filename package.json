@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "express": "~4.17.1",
-    "request": "~2.20.0",
+    "request": "~2.28.0",
     "mongodb": "^2.2.36",
     "mongoose": "~3.6.9",
     "sprintf": "~0.1.1",
