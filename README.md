@@ -20,6 +20,11 @@ This software runs within the NodeJS framework.
 
 ## Release Notes
 
+### Version 2.0.0
+
+- Add date here
+- Burst altitude on prediction was incorrect due to incorrect API use, formulas and parsing of wgrib2 format.
+- Added restful grib2 data, API and model documentation.
 
 
 ### Version 1.0.0
@@ -110,6 +115,82 @@ This document only captures the high-level design.
         - Any representation of information such as a chart, diagram or table. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants.
     - Controller
         - Accepts input and converts it to commands for the model or view.
+
+### Restful API
+
+1. **api/balloons?<parameters>**
+    - Parameters
+        - None
+    - Description
+        - Get a listing of the Balloon types that are supported by the flight prediction tool that are categorised by their Balloon brand and size. Reporting additional information about each of the Balloon such as their mass, burst radius and drag.
+    - Response
+        - JSON: Describing characteristics of each of the supported balloon types.
+1. **api/prediction?<parameters>**
+    - Parameters
+        - loc: Launch location as latitude and longitude, in decimal.
+        - time: Milliseconds since Epoch.
+        - balloon[type]: Supported Balloon type of the brand and size, example *Kaymont 800g*.
+        - balloon[totalLift]: Sum of the Net lift, Balloon mass, and the payload, in kgs.
+        - parachute[area]: Area of the parachute when deployed on descent, in m3.
+        - parachute[drag]: Drag of the parachute when deployed on descent.
+        - mass: Payload attached to the balloon, in kgs.
+        - direction: Possible values of quick, forward, reverse.
+    - Description
+        - Performs a flight path prediction for the given balloon at the given time from the starting location in a forward or reverse direction using the balloon and parachute characteristics that are provided.
+    - Response
+        - JSON: Describing the flight path prediction as a series of geographical data points that can be plotted onto a map.
+1. **api/sounding?<parameters>**
+    - Parameters
+        - loc: Launch location as latitude and longitude, in decimal.
+        - time: Milliseconds since Epoch.
+    - Description
+        - Get the sounding information for the given location and time.
+    - Response
+        - JSON: Sounding information that includes the temperature, altitude, pressure and wind direction.
+
+### Model
+
+1. Estimation Calculations
+    - Burst Volume = 4/3 * PI * r^3
+    - Launch Volume = (Lift + Balloon mass + Payload mass) / (rhoAir - rohGas)
+    - Burst Altitude = 7238.3 ln ( Burst Volume / Launch Volume )
+1. Prediction Calculations
+    - P * V = n * R  * T (Ideal Gas Law)
+    - Ascent Rate = SQRT( (lift * gravity) / ( 0.5 * rohAir * Balloon Drag * Balloon Area ) )
+        - Lift, rohAir and Balloon area values change as the altitude and hence atmospheric pressure changes.
+    - Descent Rate = SQRT( (payload mass * gravity) / ( 0.5 * rohAir * Parachute Drag * Parachute Area ) )
+        - rohAir changes as the altitude and hence atmospheric pressure changes
+
+### Grib2 data
+
+Grib2 data is down loaded from NOAA and is parsed into an internal data structure that is cached into a Mongo database.
+
+To view this data.
+```
+$ ./grib2/wgrib2/wgrib2 data/1573495200000.grib2.small -s -ij 91 1
+```
+
+An example of the data format.
+
+```
+1:0:d=2019111106:HGT:1 mb:12 hour fcst::val=49076.6
+2:78774:d=2019111106:TMP:1 mb:12 hour fcst::val=275.909
+3:124181:d=2019111106:UGRD:1 mb:12 hour fcst::val=-5.87596
+4:208839:d=2019111106:VGRD:1 mb:12 hour fcst::val=13.1186
+5:292375:d=2019111106:HGT:2 mb:12 hour fcst::val=43495
+6:378208:d=2019111106:TMP:2 mb:12 hour fcst::val=271.1
+7:422138:d=2019111106:UGRD:2 mb:12 hour fcst::val=-3.63299
+8:506059:d=2019111106:VGRD:2 mb:12 hour fcst::val=7.5756
+
+```
+
+The data comes in blocks of 4.
+1. First element is the Altitude of the data point, in meters.
+1. Second element is the Temperature of the data point, in kelvin.
+1. Third element is the u-component of wind, in m/s.
+1. Fourth element is the v-component of wind, in m/s.
+
+Each of these blocks comes at the atmospheric pressure, in hPa, of 1, 2, 3, 5, 7, 125, 175, 225, 275, 325, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825, and 875.
 
 ## Heroku
 
