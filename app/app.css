@@ -1,21 +1,73 @@
-html, body {
-	height: 100%;
+#applist .media i {
+	text-align: center;
 }
 
-.ui-content {
-	height: 100%;
+#calendar th {
+	text-align: center;
+	width: 14.2857142857%;
 }
 
-#col-left {
-	float: left;
-	width: 50%;
+#calendar .forecast {
+	width: 100%;
+	clear: both;
+	text-align: center;
+	font-size: smaller;
 }
 
-#col-right {
-	float: right;
-	width: 50%;
+@media (max-width: 600px) {
+	#calendar table,
+	#calendar thead,
+	#calendar tbody,
+	#calendar th,
+	#calendar td,
+	#calendar tr {
+		display: block;
+	}
+
+	#calendar thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#calendar td { 
+		margin-top: 0px;
+	}
+
+	#calendar td:before {
+		content: attr(data-day);
+		display: block;
+		font-weight: bold;
+	}
+
+	#calendar .media-heading {
+		float: left;
+	}
+    
+	#calendar .forecast {
+		clear: none;
+	}
+
+	#calendar .unused {
+		display: none;
+	}
 }
 
-.hidden {
-	display: none;
+#map {
+	height: 100px;
+	min-height: 100px;
+}
+
+table.table-vertical-row-header tr>th {
+	text-align: center;
+	vertical-align: middle;
+	width: 1em;
+}
+.table-vertical-row-header tr>th>div {
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+
 }

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stratocast - Online HAB Flight Prediction</title>
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="lib/Meteocons/stylesheet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+	<link rel="stylesheet" type="text/css" href="app.css">
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+	<script data-main="app" src="lib/require.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle btn btn-default navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+				<i class="fa fa-ellipsis-h"></i>
+			</button>
+			<a class="navbar-brand" href="#">Stratocast</a>
+		</div>
+		<div id="header" class="collapse navbar-collapse">
+			<!-- Header will be rendered here -->
+			<ul class="nav navbar-nav">
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+			<div class="btn-group navbar-right" data-toggle="buttons">
+				<label class="btn btn-default navbar-btn" id="metricLabel">
+					<input type="radio" name="unitSystem" id="metric"> Metric
+				</label>
+				<label class="btn btn-default navbar-btn" id="englishLabel">
+					<input type="radio" name="unitSystem" id="english"> English
+				</label>
+			</div>
+		</div>
+		</div>
+	</nav>
+	<div id="content" class="container">
+		<!-- Content will be rendered here -->
+	</div>
+</body>
+
+</html>

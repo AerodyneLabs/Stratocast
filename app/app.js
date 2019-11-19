@@ -1,101 +1,141 @@
-// Create the application object if it doesn't already exist
-var App = App || new Backbone.Marionette.Application();
+// File: app.js
+require.config({
+  paths: {
+    underscore: [
+      '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min',
+      'lib/underscore'
+    ],
+    jquery: [
+      '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min',
+      'lib/jquery-1.9.1'
+    ],
+    bootstrap: [
+      '//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min',
+      'lib/boostrap'
+    ],
+    backbone: [
+      //'//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone',
+      'lib/backbone'
+    ],
+    syphon: [
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.syphon/0.4.1/backbone.syphon.min',
+      'lib/backbone.syphon.min'
+    ],
+    localStorage: [
+      '//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min',
+      'lib/backbone.localStorage-min'
+    ],
+    marionette: [
+      '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.min',
+      'lib/backbone.marionette'
+    ],
+    handlebars: [
+      '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min',
+      'lib/handlebars'
+    ],
+    leaflet: [
+      '//cdn.leafletjs.com/leaflet-0.7.2/leaflet',
+      'lib/leaflet'
+    ],
+    d3: [
+      '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.0/d3.v3.min',
+      'lib/d3.min'
+    ],
+    modulehelper: 'modules/modulehelper'
+  },
 
-// Create the main appliaction region
-App.addRegions({
-	mainRegion: "body"
+  shim: {
+    underscore: {
+      exports: '_'
+    },
+    jquery: {
+      exports: 'jQuery'
+    },
+    bootstrap: {
+      deps: ['jquery'],
+      exports: 'Bootstrap'
+    },
+    backbone: {
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone'
+    },
+    syphon: {
+      deps: ['backbone']
+    },
+    localStorage: {
+      deps: ['backbone']
+    },
+    marionette: {
+      deps: ['backbone'],
+      exports: 'Marionette'
+    },
+    leaflet: {
+      exports: 'L'
+    },
+    d3: {
+      exports: 'd3'
+    },
+    modulehelper: {
+      deps: ['marionette']
+    }
+  }
 });
 
-// Define a generic page layout
-App.PageLayout = Backbone.Marionette.Layout.extend({
-	template: "#page-layout",
-	tagName: 'div',
-	attributes: {
-		'data-role': 'page'
-	},
-	regions: {
-		header: "#header",
-		content: "#content",
-		footer: "#footer",
-		panel: "#panel"
-	}
-});
+require(['marionette', 'bootstrap', 'syphon', 'localStorage', 'handlebars', 'leaflet', 'modulehelper'], function(Marionette) {
+  // Define the applications available
+  var options = {
+    applications: [{
+      title: 'Forward Prediction',
+      description: 'Run a detailed prediction to find the landing site.',
+      icon: 'fa fa-play',
+      event: 'ForwardPrediction:Display'
+    }, {
+      title: 'Reverse Prediction',
+      description: 'Run a detailed prediction to find the launch site.',
+      icon: 'fa fa-play',
+      iconClass: 'fa-flip-horizontal',
+      event: 'ReversePrediction:Display'
+    }, {
+      title: 'Quick Prediction',
+      description: 'Run a simple prediction.',
+      icon: 'fa fa-fast-forward',
+      event: 'QuickPrediction:Display'
+    }, {
+      title: 'Balloon Calculator',
+      description: 'Compare different ascent rates and burst altitudes.',
+      icon: 'fa fa-wrench',
+      event: 'BalloonCalculator:Display'
+    }] /*{
+      title: 'Historical Prediction',
+      description: 'Run a prediction for a date in the past.',
+      icon: 'fa fa-clock-o',
+      event: 'HistoricalPrediction:Display'
+    }]*/
+  };
 
-// define a generic two column layout
-App.ColumnLayout = Backbone.Marionette.Layout.extend({
-	template: '#column-layout',
-	regions: {
-		left: '#col-left',
-		right: '#col-right'
-	}
-});
+  // Use handlebars instead of underscore templates
+  Marionette.TemplateCache.prototype.compileTemplate = function(template) {
+    return Handlebars.compile(template);
+  };
 
-// Define a generic title view
-App.TitleView = Backbone.Marionette.ItemView.extend({
-	template: function(ser) {
-		var title = ser.title;
-		return _.template(
-			'<%= data.title %>',
-			{title : title},
-			{variable: 'data'}
-		);
-	},
-	serializeData: function() {
-		return {title: this.title};
-	},
-	tagName: 'span'
-});
+  // Create Marionette Application
+  window.App = new Marionette.Application();
 
-// Define a generic text view
-App.TextView = Backbone.Marionette.ItemView.extend({
-	template: function(ser) {
-		var text = ser.text;
-		return _.template(
-			'<%= data.text %>',
-			{text : text},
-			{variable: 'data'}
-		);
-	},
-	serializeData: function() {
-		return {text: this.text};
-	},
-	tagName: 'p'
-});
+  // Define application regions
+  App.addRegions({
+    header: '#header',
+    content: '#content'
+  });
 
-// Log all events for debugging
-App.vent.on('all', function(event, model) {
-	console.log('Event - ' + event);
-});
+  // Log events to console for debug
+  App.vent.on('all', function(event) {
+    console.log('Event: ' + event);
+  });
 
-// Application startup
-App.addInitializer(function(options) {
-	App.vent.trigger('Mobile:Init');
-});
-
-App.Application = Backbone.Model.extend({});
-var Applications = Backbone.Collection.extend({
-	model: App.Application
-});
-App.Applications = new Applications();
-
-App.fixGeometry = function() {
-	var winHeight = $(window).innerHeight();
-	var headHeight = $('[data-role="header"]').outerHeight();
-	var footHeight = $('[data-role="footer"]').outerHeight();
-	var content = $('[data-role="content"]');
-	var padHeight = content.outerHeight() - content.height();
-	if(headHeight != null && footHeight != null) {
-		var contentHeight = winHeight - headHeight - footHeight - padHeight - 14;
-		content.height(contentHeight);
-	}
-};
-
-$(window).bind('orientationchange resize pageshow', App.fixGeometry);
-
-// Start the application
-$(document).ready(function() {
-	console.log('Main:Starting');
-	App.start();
-	var router = new Backbone.Marionette.AppRouter();
-	Backbone.history.start();
+  require(['modules/predictor/loader'], function() {
+    require(['modules/main/loader'], function() {
+      App.start(options);
+    });
+  });
 });

@@ -1,0 +1,49 @@
+<fieldset>
+	<legend>Payload &amp; Balloon</legend>
+	<p>Enter your balloon and payload information in the boxes below.</p>
+	<div class="form-group col-lg-6">
+		<label for="brand" class="control-label">Brand</label>
+		<select id="manufacturer" name="brand" class="form-control">
+			<option>Kaymont</option>
+			<option>Howyee</option>
+		</select>
+	</div>
+	<div class="form-group col-lg-6">
+		<label for="size" class="control-label">Size</label>
+		<select id="size" name="size" class="form-control">
+			<option>200g</option>
+			<option>300g</option>
+			<option>350g</option>
+			<option>600g</option>
+			<option>800g</option>
+			<option>1000g</option>
+			<option>1200g</option>
+			<option>1500g</option>
+			<option>2000g</option>
+			<option>3000g</option>
+		</select>
+	</div>
+	<div class="form-group col-lg-6">
+		<label for="mass" class="control-label">Payload Mass ({{unitMass}})</label>
+		<input id="mass" name="mass" type="number" step="0.05" min="0.05" class="form-control">
+	</div>
+	<div class="form-group col-lg-6">
+		<label for="lift" class="control-label">Net Lift ({{unitMass}})</label>
+		<input id="lift" name="lift" type="number" step="0.05" min="0.05" class="form-control">
+	</div>
+</fieldset>
+<fieldset>
+	<p>Enter your parachute information in the boxes below.</p>
+	<div class="form-group col-lg-6">
+		<label for="drag" class="control-label">Drag Coefficient</label>
+		<input id="drag" name="drag" type="number" step="0.01" min="0.01" class="form-control">
+	</div>
+	<div class="form-group col-lg-6">
+		<label for="area" class="control-label">Chute Area ({{{unitArea}}})</label>
+		<input id="area" name="area" type="number" step="0.01" min="0.01" class="form-control">
+	</div>
+</fieldset>
+<div class="btn-group pull-right">
+	<button id="prev" type="button" class="btn">Back</button>
+	<button id="next" type="button" class="btn btn-primary">Next</button>
+</div>

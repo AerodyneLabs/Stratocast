@@ -1,12 +1,16 @@
 {
   "name": "Stratocast",
   "description": "An online high altitude balloon prediction application",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "author": "AeroDyne Labs <support@aerodynelabs.com>",
   "contributors": [
     {
       "name": "Ethan Harstad",
       "email": "ethanharstad@gmail.com"
+    },
+    {
+      "name": "Justin Hernandez",
+      "email": "justin_h1@hotmail.com"
     }
   ],
   "license": "BSD",
@@ -15,21 +19,20 @@
     "url": "https://github.com/AerodyneLabs/Stratocast"
   },
   "dependencies": {
-    "express": "~3.2.0",
-    "request": "~2.20.0",
-    "mongoose": "~3.6.9",
-    "javascript-brunch": "~1.5.1",
-    "coffee-script-brunch": "~1.5.1",
-    "css-brunch": "~1.5.1",
-    "clean-css-brunch": "~1.5.1",
-    "uglify-js-brunch": "~1.5.1",
-    "kue": "~0.6.2",
-    "sprintf": "~0.1.1"
+    "express": "~4.17.1",
+    "request": "~2.88.0",
+    "mongodb": "^2.2.36",
+    "mongoose": "~5.7.9",
+    "sprintf": "~0.1.1",
+    "handlebars": "~4.5.1",
+    "redis": "^0.8.6",
+    "async": "~0.2.9",
+    "underscore": "~1.5.1",
+    "mongoskin": "~0.6.0",
+    "numeric": "~1.2.6"
   },
   "scripts": {
     "start": "node server.js",
-    "autobuild-server": "nodemon server.js",
-    "build-client": "brunch build",
-    "autobuild-client": "brunch watch"
+    "test": "node client-test.js"
   }
 }

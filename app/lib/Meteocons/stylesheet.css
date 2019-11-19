@@ -1,0 +1,40 @@
+@font-face {
+	font-family: 'MeteoconsRegular';
+	src: url('meteocons-webfont.eot');
+	src: url('meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('meteocons-webfont.woff') format('woff'),
+		 url('meteocons-webfont.ttf') format('truetype'),
+		 url('meteocons-webfont.svg#MeteoconsRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon-sunny:before {
+	font-family: 'MeteoconsRegular';
+	content: 'B';
+}
+
+.icon-partlycloudy:before {
+	font-family: 'MeteoconsRegular';
+	content: 'H';
+}
+
+.icon-cloudy:before {
+	font-family: 'MeteoconsRegular';
+	content: 'N';
+}
+
+.icon-windy:before {
+	font-family: 'MeteoconsRegular';
+	content: 'F';
+}
+
+.icon-rainy:before {
+	font-family: 'MeteoconsRegular';
+	content: 'R';
+}
+
+.icon-stormy:before {
+	font-family: 'MeteoconsRegular';
+	content: 'O';
+}

@@ -1,0 +1,58 @@
+<h3>Prediction Results</h3>
+<table class="table table-bordered table-vertical-row-header">
+	<tr>
+		<th>
+			<div>Overview</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Elapsed Time</dt><dd>{{relativeTime elapsedTime}}</dd>
+				<dt>Total Distance</dt><dd>{{convertDistance totalDistance}}</dd>
+				<dt>Bearing</dt><dd>{{angle bearing}}</dd>
+				<dt>Ascent Rate</dt><dd>{{convertSpeed ascentRate}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="success">
+		<th>
+			<div>Launch</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{absoluteTime launchTime}}</dd>
+				<dt>Ascent Time</dt><dd>{{relativeTime ascentTime}}</dd>
+				<dt>Location</dt><dd>{{position launchPosition}}<br /><small>{{launchLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance launchAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="warning">
+		<th>
+			<div>Burst</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{absoluteTime burstTime}}</dd>
+				<dt>Location</dt><dd>{{position burstPosition}}<br /><small>{{burstLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance burstAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+
+	<tr class="danger">
+		<th>
+			<div>Landing</div>
+		</th>
+		<td>
+			<dl class="dl-horizontal">
+				<dt>Time</dt><dd>{{absoluteTime landingTime}}</dd>
+				<dt>Descent Time</dt><dd>{{relativeTime descentTime}}</dd>
+				<dt>Location</dt><dd>{{position landingPosition}}<br /><small>{{landingLocation}}</small></dd>
+				<dt>Altitude</dt><dd>{{convertDistance landingAltitude}}</dd>
+			</dl>
+		</td>
+	</tr>
+</table>
+Performed: {{absoluteTime analysisTime}}
